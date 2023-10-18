@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>后代选择器和子元素选择器</title>
+	<style>
+
+		/*后代选择器 选择 子孙后代*/
+		.stl li {
+			font-size: 18px;
+			font-style: italic;
+		}
+		/*子元素选择器  符号  > 只选亲儿子 这些元素 */
+		ol>li {
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="stl">
+		<ul>
+			<li>语文</li>
+			<li>数学</li>
+			<li>外语</li>
+		</ul>
+		<ol>
+			<li>第一名</li>
+			<li>第二名</li>
+			<li>第三名</li>
+		</ol>
+	</div>
+
+</body>
+</html>

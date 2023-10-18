@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-非父子组件之间数据交互.</title>
+    <!-- 
+        单独的事件中心管理组件间的通信
+
+
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <text-tom></text-tom>
+        <text-jan></text-jan>
+
+    </div>
+    
+    <script>
+        // 创建一个vue实例作为事件中心
+        const hub = Vue();
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                }
+            },
+            methods: {
+                handle(val) {
+                    console.log('===', val);
+                    this.fontSize += val;
+                }
+            }
+        })
+        // 注册组件：button-counter
+        app.component('text-tom', {
+            data() {
+                return {
+                    num: 0,
+                }
+            },
+            template:`
+                <div>
+                    <div>Tom:{{num}}</div>
+                    <div>
+                        <button @click='handle'>点击</button>
+                    </div>
+                </div>`,
+            methods: {
+                handle() {
+                    hub.$emit('jan-event', 1);
+                }
+            },
+            mounted() {
+                hub.$on('jan-event', (val) => {
+                    this.num += val;
+                });
+            }
+        })
+        app.component('text-jan', {
+            data() {
+                return {
+                    num: 0,
+                }
+            },
+            template:`
+                <div>
+                    <div>Jan:{{num}}</div>
+                    <div>
+                        <button @click='handle'>点击</button>
+                    </div>
+                </div>`,
+            methods: {
+                handle() {
+                    hub.$emit('Tom-event', 2);
+                }
+            },
+            mounted() {
+                hub.$on('jan-event', (val) => {
+                    this.num += val;
+                });
+            }
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

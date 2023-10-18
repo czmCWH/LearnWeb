@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-组件props数据类型</title>
+    <!-- 
+        字符串 String
+        数值 Number
+        布尔值 Boolean
+        数组 Array
+        对象 Object
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <button-counter v-bind:title='msg'></button-counter>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                }
+            }
+        })
+        // 注册组件：button-counter
+        app.component('button-counter', {
+            data() {
+                return {
+                    count: 'hello Vue!'
+                }
+            },
+            // 定义属性，获取父组件传递的值
+            props: ['title'],
+            template:`
+                <button @click="handle">
+                You clicked {{ count }}
+                </button>`,
+            methods: {
+                handle() {
+                    this.count = this.title;
+                }
+            }
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

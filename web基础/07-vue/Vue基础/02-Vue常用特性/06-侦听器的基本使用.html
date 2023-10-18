@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-侦听器的基本使用</title>
+    <!-- 
+    侦听器用来监听数据的变化，如果数据变化则执行相应的方法。
+
+    侦听器的应用场景：
+        数据变化时执行异步或开销较大的操作。这是与计算属性不同的。
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <div>
+            <input type="text" v-model='firstName'>
+        </div>
+        <div>
+            <input type="text" v-model='lastName'>
+        </div>
+        <div>{{ fullName }}</div>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    firstName: '唐',
+                    lastName: '人',
+                    fullName: '唐人街',
+                }
+            },
+            watch: {
+                firstName(newValue, oldValue) {
+                    this.fullName = newValue + this.lastName
+                },
+                lastName(newValue, oldValue) {
+                    this.fullName = this.firstName + newValue
+                }
+            },
+            
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

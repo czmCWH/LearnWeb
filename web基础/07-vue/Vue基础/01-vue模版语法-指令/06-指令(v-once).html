@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-指令(v-once)</title>
+    <!-- 
+    
+    v-once 指令：只编译一次，显示内容之后不再具有响应式功能。
+
+    如果显示的内容后续不需要修改，可以使用v-once，这样可以提高性能。
+
+    如下所示第1个div不会发生变化，第2个div会随着数据的变化而变化
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <div v-text="msg" v-once></div>
+        <div v-text="msg"></div>
+        <input type="text" v-model="msg">
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

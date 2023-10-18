@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-v-on指令的事件修饰符</title>
+    <!-- 
+    事件修饰符 用于处理事件的一些特殊行为，例如：阻止默认行为，阻止事件冒泡行为。
+
+    > 在事件名称后面添加 点 和 事件修饰符。
+    > 事件修饰符可以连写，达到多种效果。
+    > 事件修饰符简化了事件的处理操作；
+    
+
+    1、.stop 修饰符，阻止事件冒泡行为
+    <button @click.stop="clickButton">点击1</button>
+
+    2、.prevent阻止元素默认事件行为，如下阻止a标签的默认跳转行为
+    <a href="https://www.baidu.com" v-on:click.prevernt="clickJump">百度</a>
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <div v-on:click="clickBox">
+            <button @click="clickButton">点击1</button>
+        </div>
+
+        <!-- 1、stop 事件修饰符阻止事件冒泡行为 -->
+        <div v-on:click="clickBox">
+            <button @click.stop="clickButton">点击1</button>
+        </div>
+
+        <a href="https://www.baidu.com" v-on:click.prevernt="clickJump">百度</a>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                }
+            },
+            methods: {
+                clickBox(e) {
+                    console.log("div click=", e.target.tagName);
+                },
+                clickButton(e) {
+                    
+                    // 方式一：原生js的方式阻止事件冒泡，一般使用方式二 .stop事件修饰符
+                    // e.stopPropagation();
+
+                    console.log("button click=", e.target.tagName);
+                },
+                clickJump(e) {
+                    // 方式一：原生js的方式阻止元素默认行为，一般使用方式二 .prevernt事件修饰符
+                    // e.preventDefault();
+                    console.log(e.target.tagName);
+                },
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

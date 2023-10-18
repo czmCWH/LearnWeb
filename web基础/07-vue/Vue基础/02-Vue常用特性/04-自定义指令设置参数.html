@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-自定义指令设置参数</title>
+    <style type="text/css">
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="appBox">
+        
+        <div class="box" v-color='msg'></div>
+
+    </div>
+    
+    <script>
+        // 创建Vue实例，Vue实例对象本身就是一个组件
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: 'red',
+                }
+            }
+        })
+        app.directive('color', {
+            // el表示指令绑定的元素；binding表示指令绑定的值
+            mounted(el, binding) {
+                console.log(binding.value);
+                el.style.backgroundColor = binding.value;
+
+            },
+            updated(el, binding) {
+                console.log(binding.value);
+                el.style.backgroundColor = binding.value;
+            }
+        })
+        app.mount('#appBox')
+        
+    </script>
+</body>
+</html>

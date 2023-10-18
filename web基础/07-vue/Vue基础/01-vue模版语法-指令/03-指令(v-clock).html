@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-指令(v-cloak)</title>
+
+    <!-- 
+    当使用插值表达式时，频繁刷新网页时，会出现先显示插值表达式再闪动替换为插值表达式的结果。为了解决这个问题，需要使用 v-cloak 指令。
+
+    Vue指令是标签元素的自定义属性;
+
+    Vue指令使用步骤：
+    1、提供v-cloak样式
+    2、在插值表达式所在的标签添加 v-cloak 指令。
+     -->
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="appBox">
+        <div v-cloak>{{msg}}</div>
+        <div v-cloak>{{ parseInt(num1) + parseInt(num2) }}</div>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: 'Hello Vue!',
+                    num1: '10',
+                    num2: '20',
+                }
+            }
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

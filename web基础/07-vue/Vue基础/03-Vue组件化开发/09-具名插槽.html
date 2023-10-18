@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-具名插槽</title>
+    <!-- 
+        组件插槽的作用：
+            父组件向子组件传递内容。
+
+        子组件会预留一个位置(slot 插槽)，用来存放父组件传递的内容。
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <alert-box>
+            <p slot='header'>标题信息</p>
+            <p>内容1</p>
+            <p>内容2</p>
+            <p slot='footer'>尾部信息</p>
+        </alert-box>
+
+        <alert-box>
+            <div slot='header'>
+                <p>标题信息</p>
+            </div>
+            <div>
+                <p>内容1</p>
+                <p>内容2</p>
+            </div>
+            <div slot='footer'>
+                <p >尾部信息</p>
+                <p >尾部信息</p>
+            </div>
+        </alert-box>
+
+    </div>
+    
+    <script>
+        
+        const app = Vue.createApp({
+            data() {
+                return {
+                }
+            },
+            
+        })
+        // 注册组件：button-counter
+        app.component('alert-box', {
+            template:`
+                <div>
+                    <header>
+                        <slot name='header'></slot>
+                    </header>
+                    <main>
+                        <slot></slot>
+                    </main>
+                    <footer>
+                        <slot name='footer'></slot>
+                    </footer>
+                </div>`,
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

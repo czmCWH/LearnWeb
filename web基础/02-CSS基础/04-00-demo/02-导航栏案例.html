@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>02-导航栏案例</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		.banner {
+			width: 760px;
+			height: 150px;
+			margin: 0 auto;
+		}
+		.nav {
+			width: 760px;
+			height: 32px;
+			margin: auto;
+			background: url(images/nav/nav_bg.jpg) repeat-x;
+		}
+		.nav ul li {
+			/*因为li是块级元素换行排列，所以需要加浮动*/
+			float: left;
+		}
+		.nav ul li a {
+			/*a是行内元素，无法设置宽度*/
+			/*为了实现 a: hover效果，需设置宽度，因此display需要转换为块*/
+			display: block;
+			width: 80px;
+			height: 32px;
+			background: url(images/nav/button1.jpg) no-repeat;
+			font-size: 12px;
+			text-decoration: none;
+			color: #40510a;
+			/*文字垂直居中*/
+			line-height: 32px;
+			/*文字水平居中*/
+			text-align: center;
+		}
+		.nav ul li a:hover {
+			background: url(images/nav/button2.jpg) no-repeat;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="banner">
+		<img src="images/nav/banner.jpg">
+	</div>
+	<div class="nav">
+		<ul>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">网站首页</a></li>
+		</ul>
+	</div>
+</body>
+</html>

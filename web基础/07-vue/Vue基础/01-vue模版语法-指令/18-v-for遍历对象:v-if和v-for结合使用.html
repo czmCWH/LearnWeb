@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-v-if和v-for结合使用</title>
+    <!-- 
+        1、v-for遍历对象和v-if结合使用
+        
+        https://cn.vuejs.org/guide/essentials/list.html
+        
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <div v-for='(v, key, i) in obj'>{{v+"--"+key+"---"+i}}</div>
+
+        <hr>
+
+        <template v-for='(v, key, i) in obj'>
+            <div v-if='v>=18'>{{v+"--"+key+"---"+i}}</div>    
+        </template>
+        
+        <hr>
+
+        <ul>
+            <template v-for='item in objArr' :key='item.id'>
+                <li v-if='item.age>=18'>
+                    {{item.name+item.age}}
+                </li>
+            </template>
+        </ul>
+        
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    obj: {
+                        name: "张三", 
+                        age: 18, 
+                        id: 1
+                    },
+                    objArr: [
+                    {name: "张三", age: 18, id: 1},
+                    {name: "里斯", age: 17, id: 2},
+                    {name: "豆腐", age: 15, id: 3},
+                    {name: "鼠标", age: 19, id: 4},
+                    ],
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

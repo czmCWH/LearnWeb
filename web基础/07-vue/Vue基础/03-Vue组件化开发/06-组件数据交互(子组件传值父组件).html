@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-组件数据交互(子组件传值父组件)</title>
+    <!-- 
+        props传递数据原则，Vue单向数据流。即允许父组件向子组件传递数据，而不允许子组件操作props中的数据。
+
+        子组件向父组件传值方式：
+            > 子组件通过自定义事件向父组件传递信息
+
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <div :style='{fontSize: fontSize + "px"}'>{{msg}}</div>
+        <menu-item v-bind:title="msg" @enlarge-text='handle($event)'></menu-item>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                    fontSize: 10,
+                }
+            },
+            methods: {
+                handle(val) {
+                    console.log('===', val);
+                    this.fontSize += val;
+                }
+            }
+        })
+        // 注册组件：button-counter
+        app.component('menu-item', {
+            data() {
+                return {
+                    parr: ['apple', 'orange', 'banana'],
+                    
+                }
+            },
+            // 定义属性，获取父组件传递的值
+            props: ['title'],
+            template:`
+                <div>
+                    <h1>{{'父组件传递的值：' + this.title}}</h1>
+                    <ul>
+                        <li :key='idx' v-for='(item, idx) in parr'>{{item}}</li>
+                    </ul>
+                    <button @click='$emit("enlarge-text", 5)'>父组件字体加5</button>
+                    <button @click='$emit("enlarge-text", 5)'>父组件字体加10</button>
+                </div>`,
+            methods: {
+                handle() {
+
+                }
+            }
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>01-基于Vue的表单操作</title>
+	<style type="text/css">
+		form div {
+			height: 40px;
+			line-height: 40px;
+		}
+		form div:nth-child(4) {
+			height: auto;
+		}
+		form div span:first-child {
+			display: inline-block;
+			width: 100px;
+		}
+	</style>
+	<!-- 
+	input 单行文本
+	textarea 多行文本
+	select 下拉多选
+	radio 单选框
+	checkbox 多选框
+	 -->
+</head>
+<body>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+	<div id='appBox'>
+		<form action="https://www.baidu.com">
+			<div>
+				<span>姓名：</span>
+				<span><input type="text" v-model='uname'></span>
+			</div>
+			<div>
+				<span>性别</span>
+				<span>
+					<input type="radio" id="male" value="1" v-model="usex">
+					<label for="male">男</label>
+
+					<input type="radio" id="female" value="2" v-model="usex">
+					<label for="female">女</label>
+				</span>
+			</div>
+			<div>
+				<span>爱好：</span>
+				<input type="checkbox" id="ball" value="1" v-model='uhobby'>
+				<label for='ball'>篮球</label>
+				<input type="checkbox" id="sing" value="2" v-model='uhobby'>
+				<label for='sing'>唱歌</label>
+				<input type="checkbox" id="code" value="3" v-model='uhobby'>
+				<label for='code'>写代码</label>
+			</div>
+			<div>
+				<span>职业：</span>
+				<select v-model='uoccupation'>
+					<option value="0">请选择职业...</option>
+					<option value="1">教师</option>
+					<option value="2">医生</option>
+					<option value="3">其它</option>
+				</select>
+			</div>
+			<div>
+				<span>个人简介：</span>
+				<textarea v-model='udescription'></textarea>
+			</div>
+			<div>
+				<!-- .prevent 阻止表单的默认操作，默认会执行 form的action属性的值 -->
+				<input type="submit" value="提交" @click.prevent='clickSubmit'>
+			</div>
+		</form>
+	</div>
+	<script>
+		// 创建一个Vue实例
+		const app = Vue.createApp({
+			data() {
+				return {
+					uname: '123',
+					usex: 1,
+					uhobby: [],
+					uoccupation: 2,
+					udescription: '你好'
+				}
+			},
+			methods: {
+				clickSubmit(e) {
+					console.log(this.uname, this.usex, this.uhobby.toString(), this.udescription);
+				}
+			}
+		});
+		app.mount('#appBox');
+	</script>
+
+</body>
+</html>

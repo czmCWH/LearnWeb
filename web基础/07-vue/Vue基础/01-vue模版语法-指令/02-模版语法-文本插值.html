@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-vue文本插值</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <!-- 
+            1、文本插值 使用的是“Mustache”语法 (即双大括号)，它是一种最基本的数据绑定形式。 
+
+            插值表达式支持基本的计算操作。
+
+            如果需要讲文本插值解释为纯文本，则需要使用 v-html 指令
+        -->
+        <div>{{1+2}}</div>
+        <div>{{msg + "---" + 123}}</div>
+        <div>{{ parseInt(num1) + parseInt(num2) }}</div>
+        <div>
+           <!-- {{<span style="color: red;">这是一个span标签</span>}} -->
+        </div>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: 'Hello Vue!',
+                    num1: '10',
+                    num2: '20',
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

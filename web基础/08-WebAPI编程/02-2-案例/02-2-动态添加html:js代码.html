@@ -1,0 +1,86 @@
+
+//****************** 向网页中动态添加一段 HTML 代码
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.box {
+			width: 100px;
+			height: 100px;
+			background: pink;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="box"></div>
+	
+	<script type="text/javascript">
+		var box = document.querySelector('.box');
+		box.innerHTML += '<a href="https://www.baidu.com" >百度</a>';
+	</script>
+	
+</body>
+</html>
+
+//****************** 向网页中动态添加一段js代码
+
+向网页中动态添加 一段 <script></script> 包裹得代码
+ 以下是向网页中动态添加一段包裹有代码的`<script></script>`的示例代码：
+
+```javascript
+// 创建一个 script 元素
+const script = document.createElement("script");
+
+// 编写包裹有代码的 <script> 标签
+const code = `
+  console.log("Hello, world!");
+`;
+
+// 将代码添加到 script 元素中
+script.text = code;
+
+// 将 script 元素添加到文档中的 head 元素中
+document.head.appendChild(script);
+```
+
+这段代码将在文档中添加一个包裹有 `console.log("Hello, world!");` 的`<script>`标签，代码会在网页加载后立即运行。
+
+
+//****************** 向网页中动态添加一段js的html代码并执行
+
+<body>
+	<div class="box"><div>
+	
+	<script type="text/javascript">
+		// 创建一个div元素
+		var div = document.createElement('div');
+
+		// 设置div元素的innerHTML为包含JavaScript代码的字符串
+		div.innerHTML = '<p>这是一个动态添加的段落。</p><script>alert("这是一个弹窗！");</' + 'script>';
+
+		// 将div元素添加到文档中
+		document.querySelector('.box').appendChild(div);
+
+		// 执行字符串中的JavaScript代码
+		eval(div.getElementsByTagName('script')[0].innerHTML);
+	</script>
+</body>
+
+
+//********** 方式2【推荐】
+
+<script type="text/javascript">
+
+		let placeholder = document.createElement('div');
+		placeholder.innerHTML = '<p>这是一个动态添加的段落。</p><script>alert("这是一个弹窗！");</' + 'script>';
+		let node = placeholder.firstElementChild;
+
+		document.body.appendChild(node);
+	</script>
+
+// https://www.zhangxinxu.com/wordpress/2021/02/html-string-dom/

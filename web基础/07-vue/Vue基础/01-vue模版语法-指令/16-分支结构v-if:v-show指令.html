@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-分支结构v-if/v-show</title>
+    <!-- 
+    
+    v-if 控制元素是否渲染到页面；
+        --- 适用于元素显示出来不在处理
+
+    v-show控制元素是否显示（元素已经渲染了，但是style="display: none;"隐藏）
+        --- 适用于频繁控制元素显示隐藏
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <!-- 1、v-if分支最后只会处理一个分支结果，所以在DOM中只会显示一个元素 -->
+
+        <div v-if='score>=90'>优秀</div>
+        <div v-else-if='80<=score&&score<90'>良好</div>
+        <div v-else-if='60<=score&&score<80'>一般</div>
+        <div v-else>差</div>
+
+        <!-- 2、v-show会在DOM中显示所有元素，只是改变 style="display: none;" -->
+
+        <div v-show='flag'>v-show测试</div>
+        <button @click="handleClick">显示/隐藏</button>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    score: 81,
+                    flag: true
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.flag = !this.flag;
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

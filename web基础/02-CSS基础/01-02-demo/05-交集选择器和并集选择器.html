@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>交集选择器和并集选择器</title>
+	<style>
+		/*交集选择，既是strong标签，又是.red 类选择器的关系*/
+		strong.red {
+			color: red;
+		}
+
+		/*并集选择器 用逗号隔开， 逗号理解为 和的意思  通常用于集体声明 集体指定选择器样式相同*/
+		.red,
+		span {
+			font-size: 18px;
+			font-style: italic;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="red">好好学习</div>
+	<span class="red">天天向上</span>
+	<strong class="red">明月几时有，把酒问青天</strong>
+	<span>天之涯，地之角</span>
+	
+</body>
+</html>

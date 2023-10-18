@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-循环结构</title>
+    <!-- 
+        
+        v-for遍历数组
+
+        key的作用：帮助vue区分不同的元素，从而提高性能。
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <ul>
+            <li v-for='item in fruits'>{{item}}</li>
+            <li v-for='(item, index) in fruits'>{{item + '---' + index}}</li>
+            <li :key='index' v-for='(item, index) in fruitsName'>
+                <span>{{item.cname}}</span>
+                <span>{{item.ename}}</span>
+            </li>
+
+            <li :key='item.id' v-for='item in fruitsName'>
+                <span>{{item.cname}}</span>
+                <span>{{item.ename}}</span>
+            </li>
+        </ul>
+        
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    fruits: ['apple', 'orange', 'banana'],
+                    fruitsName: [
+                        {id: 1, ename: 'apple', cname: '苹果'},
+                        {id: 2, ename: 'orange', cname: '橘子'},
+                        {id: 3, ename: 'banana', cname: '香蕉'},
+                        ],
+
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

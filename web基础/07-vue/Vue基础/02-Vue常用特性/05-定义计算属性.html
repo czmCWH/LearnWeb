@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-定义计算属性</title>
+    <!-- 
+    
+    表达式的计算逻辑可能会比较复杂，使用计算属性可以使模版内容更加简洁。
+
+    计算属性是基于它们的依赖进行缓存的。而方法不存在缓存机制。
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <div v-text="msg"></div>
+        <div>{{msg.split('').reverse().join('')}}</div>
+        <div>{{reverseMsg}}</div>
+        <button @click='handleAction'>点击</button>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                }
+            },
+            computed: {
+                // reverseMsg计算属性的getter
+                reverseMsg() {
+                    return this.msg.split('').reverse().join('');
+                }
+            },
+            methods: {
+                handleAction() {
+                    this.msg = '书万卷书，行万里路';
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

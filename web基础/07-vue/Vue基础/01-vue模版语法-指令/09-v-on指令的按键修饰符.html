@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-v-on指令的按键修饰符</title>
+    <!-- 
+    具体可参考《Vue.js 事件处理》：https://cn.vuejs.org/guide/essentials/event-handling.html
+    
+    1、v-on:keyup.enter ：
+    绑定键盘事件，通过.enter修饰符，监听点击回车
+
+    2、v-on:keyup.delete ：
+    绑定键盘事件，通过.delete修饰符，监听点击删除
+
+    3、另外还有很多：可参考Vue.js文档
+    
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <form>
+            <div>
+                用户名：<input type="text" v-model="uname" v-on:keyup.delete="clearContent">
+            </div>
+            <div>
+                密码：<input type="text" v-model="pwd" v-on:keyup.enter="handleSubmit">
+            </div>
+            <div>
+                <input type="button" value="提交" @click="handleSubmit">
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    uname: '',
+                    pwd: '',
+                }
+            },
+            methods: {
+                handleSubmit(e) {
+                    console.log(this.uname, this.pwd);
+                },
+                clearContent(e) {
+                    // 点击delete时，清空内容
+                    this.uname = ""
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

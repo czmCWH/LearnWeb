@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-过滤器</title>
+    <!-- 
+    过滤器的作用
+        格式化数据，比如将字符串格式化为首字母大写，将日期格式化为指定格式。
+
+    Vue3 去掉了过滤器。
+
+     -->
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        <input type="text" v-model='msg'>
+        <div>{{ upperChange(msg) }}</div>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '',
+                }
+            },
+            methods: {
+                upperChange(val, e) {
+                    console.log(val);
+                    return val.charAr(0).toUpperCase() + val.slice(1);
+                },
+            }   
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

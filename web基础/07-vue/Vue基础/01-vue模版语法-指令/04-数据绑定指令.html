@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-vue文本插值</title>
+    
+    <!-- 
+    
+    数据绑定指令：把数据填充到页面中
+    
+    1、v-text 填充元素的纯文本内容
+        相比插值表达式更简洁，并且没有闪动的问题。
+
+    2、v-html：v-html 的内容直接作为普通 HTML 插入，存在安全问题
+
+    3、v-pre：填充原始信息，跳过编译过程显示原始信息
+    
+     -->
+
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="appBox">
+        
+        <div v-text="msg"></div>
+        
+        <div v-text="htmlMsg1"></div>
+        <div v-html="htmlMsg1"></div>
+
+        <div>{{msg}}</div>
+        <div v-pre>{{msg}}</div>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg: '好好学习，天天向上!',
+                    htmlMsg1: "<h1>HTML</h1>",
+                }
+            }
+
+        })
+        app.mount('#appBox')
+    </script>
+</body>
+</html>

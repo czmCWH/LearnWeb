@@ -1,0 +1,6 @@
+1、借助 SvelteKit / Vite 来创建项目，而不是 Svelte 官网。这种方式可以自带路由
+
+https://kit.svelte.dev/docs/creating-a-project
+
+
+https://cn.vitejs.dev/guide/
