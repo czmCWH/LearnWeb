@@ -39,3 +39,5 @@ filter: drop-shadow(rgb(249, 254, 184) 0px 0px 8px);
 [css给图片加阴影的两种方式](https://www.dczzs.com/articles/2021/08/18/1629266321890.html)
 
 [css给图片添加阴影效果方法](https://blog.csdn.net/guo_qiangqiang/article/details/122366649)
+
+[掘金 * bubuko * box-shadow 设置单边、多边阴影](https://juejin.cn/post/6854573222483099656)
