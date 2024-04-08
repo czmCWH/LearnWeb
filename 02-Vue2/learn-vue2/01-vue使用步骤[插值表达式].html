@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- https://v2.cn.vuejs.org/v2/guide/installation.html -->
+  
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">
+    <p>姓名：{{ uname }}</p>
+    <p>年龄：{{ age }}</p>
+    <p>朋友: {{ friend.uname }}</p>
+  </div>
+
+  <!-- 
+    步骤2：导入vue包 
+    方式一：通过CDN引入Vue
+    方式二：官网 https://v2.cn.vuejs.org/v2/guide/installation.html 下载vue包，并导入
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+  <script>
+
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app',   // 表示把 Vue 展示到那个 DOM 元素里
+      // data：表示要展示的数据
+      data: {
+        uname: '章三',
+        age: 30,
+        friend: {
+          uname: '李四',
+          sex: '男'
+        }
+      }
+    })
+
+    // 打印 Vue 实例对象，该对象拥有 data 中定义的所有属性
+    console.log(app)
+
+    /** 安装 Vue Devtools 
+     * Vue Devtools <https://v2.cn.vuejs.org/v2/guide/installation.html>
+     * Vue Devtools: 允许你在一个更友好的界面中审查和调试 Vue 应用。
+     * 在 Chrome 应用商店搜索 Vue Devtools，安装成功后启用。
+     * 
+     * 注意注意注意：允许访问文件网址 必须开启！！！！！！！！！！！！！！！
+     * 
+     * 1、插值表达式
+     *  {{ 表达式 }} 插值表达式，是一种 vue 的模版语法，用于将 Vue 的 data 数据渲染到 DOM 中。
+     *  表达式：是指可以被求值的代码，JS引擎会将其计算出一个结果。比如：变量、算术运算、三目运算、对象属性、调用函数等 
+     * 
+     * 2、响应式
+     * 数据改变，试图自动更新
+     * 使用 Vue 开发，开发者可以专注于业务核心逻辑。
+     * 
+     */
+  </script>
+
+</body>
+</html>

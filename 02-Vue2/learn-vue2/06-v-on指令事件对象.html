@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+    <!-- 
+      1、如果在HTML模版中使用事件对象，可以使用 $event(固定写法)
+     -->
+    <h3>1、显示跟随输入内容</h3>
+    <input @input="text1 = $event.target.value" type="text"/>
+    <p>{{ text1 }}</p>
+
+     <!-- 
+      2、如果在JS中使用事件对象，还是使用事件处理函数的形参 e 获取
+      -->  
+    <h3>2、显示跟随输入内容</h3>
+    <input @input="fn" type="text"/>
+    <p>{{ text2 }}</p>
+    
+    <div @click="fn2($event, 100, 200)">事件对象和其它形参</div>
+
+  </div>
+
+  <!-- 步骤2：导入vue包  -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app', 
+      data: {
+        text1: '',
+        text2: '',
+      },
+      methods: {
+        fn(e) {
+          this.text2 = e.target.value
+        },
+        fn2(e, val1, val2) {
+          console.log(e.target, val1, val2)
+        }
+      }
+    })
+
+    console.log(app)
+
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+
+    <div style="display: flex; align-items: center;">
+      <div>
+        <button v-show="index>0" @click="index--">上一张</button>
+      </div>
+    <!-- 
+      v-bind 指令，动态的设置html的标签属性，比如：src、url、title...
+      语法：v-bind:html标签的属性名="表达式"
+      简写：:html标签的属性名="表达式"
+     -->
+     <!-- <img v-bind:src="src" v-bind:alt="alt"/> -->
+     <img :src="list[index]" :alt="alt"/>
+
+     <div>
+      <button v-show="index<list.length-1" @click="index++">下一张</button>
+     </div>
+    </div>
+
+  </div>
+
+  <!-- 步骤2：导入vue包  -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app',   
+      data: {
+        list: [
+        './img/111.png',
+        './img/222.png',
+        './img/333.png'
+        ],
+        alt: '火影忍者',
+        index: 0
+      },
+    })
+
+    console.log(app)
+
+   </script>
+
+</body>
+</html>

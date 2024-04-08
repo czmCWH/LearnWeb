@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+    <!-- 
+      1、v-on 指令
+      作用：注册事件 = 添加监听 + 提供处理逻辑
+      语法：
+          v-on:事件名="内联语句"，适合于简单的逻辑
+          v-on:事件名="vue methods中的函数"
+
+     -->
+     <!--  @click 是 v-on:click 的简写 -->
+     <button v-on:click="count--">--按钮</button>
+     <span>count: {{ count }}</span>
+     <button @click="count++">++按钮</button>
+
+    <div>
+      <h1 v-show="flag">天天学习，保持学习</h1>
+      <button @click="changeShow">切换标题显示隐藏</button>
+    </div>
+
+  </div>
+
+   <!-- 步骤2：通过本地导入 Vue 包 -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app', 
+      data: {
+        count: 0,
+        flag: true
+      },
+      methods: {
+        // 注意：methods中的方法访问 data 中的属性，必须使用this，this 表示Vue实例对象。
+        changeShow() {
+          this.flag = !this.flag
+        }
+      }
+    })
+
+    console.log(app)
+
+   </script>
+
+</body>
+</html>

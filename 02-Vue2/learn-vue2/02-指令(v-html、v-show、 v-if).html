@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      line-height: 100px;
+      margin: 10px;
+      border: 1px solid #000;
+      border-radius: 8px;
+      box-shadow: 1px 2px 2px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1、准备展示 Vue 的容器 -->
+  <div id="app">
+
+    <!-- 
+      Vue 指令
+      Vue 会根据不同的指令，针对标签实现不同的功能。
+      指令：带有 'v-' 前缀的特殊【标签属性】。
+     -->
+    
+    <!-- 
+      1、v-html 指令
+      v-html="表达式" 等价于 动态设置元素 innerHTML
+     -->
+    <p>{{ str }}</p>
+    <p v-html="str">标签内原有的内容会被覆盖</p>
+
+     <!-- 
+      2、v-show 、 v-if 指令
+      v-show：控制元素显示隐藏
+        原理：是根据 diplay: none 控制显示隐藏
+        场景：频繁切换显示隐藏
+
+      v-if：控制元素显示隐藏
+        原理：基于条件判断，是否创建或移除元素节点
+        场景：要么显示，要么隐藏，不会切换
+      -->
+    
+      <div class="box" v-show="flag">我是 v-show 控制的盒子</div>
+      <div class="box" v-if="flag">我是 v-if 控制的盒子</div>
+
+
+  </div>
+
+  <!-- 2、通过本地导入 Vue 包 -->
+  <script src="./js/vue.js"></script>
+
+  <script>
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        str: '你是一个<strong>优秀</strong>的boy',
+        flag: false
+      }
+    })
+    
+  
+   </script>
+</body>
+
+</html>

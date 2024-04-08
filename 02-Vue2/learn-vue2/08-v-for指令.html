@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+  <!-- 
+    v-for 指令，表示基于数据循环，多次渲染整个元素。
+    语法：v-for="(item, index) in 数组" 
+    简写：v-for="item in 数组"
+   -->
+   
+   <h3>宝贝水果店</h3>
+   <ul>
+    <li v-for="item in list">{{ item }}</li>
+   </ul>
+  
+
+  </div>
+
+  <!-- 步骤2：导入vue包  -->
+  <script src="./js/vue.js"></script>
+
+  <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app', 
+      data: {
+        list: ['西瓜', '苹果', '梨', '香蕉']
+      }
+    })
+
+    console.log(app)
+
+  </script>
+
+</body>
+</html>

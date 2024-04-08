@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 250px;
+      height: 100px;
+      border: 1px solid #000;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+     <div class="box">
+      <h3>开心咖啡售卖机</h3>
+      <button @click="fn(5)">可乐5元</button>
+      <button @click="fn(10)">咖啡10元</button>
+      <button @click="fn(20)">牛奶20元</button>
+     </div>
+     <span>银行卡余额：{{ money }}</span>
+  </div>
+
+
+  <!-- 步骤2：导入vue包  -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app', 
+      data: {
+        money: 100
+      },
+      methods: {
+        fn(val) {
+          this.money = this.money - val
+        }
+      }
+    })
+
+   </script>
+
+</body>
+</html>

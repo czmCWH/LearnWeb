@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+  </div>
+
+  <!-- 步骤2：导入vue包  -->
+  <!-- 方式一：通过CDN引入Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+   <!-- 方式二：通过本地导入 Vue 包 -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app',   // 表示把 Vue 展示到那个 DOM 元素里
+      // data：表示要展示的数据
+      data: {
+        uname: '张三',
+      }
+    })
+
+    console.log(app)
+
+   </script>
+
+</body>
+</html>
