@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    // 掘金 * 河畔一角 ｜ 2022了还不会调试吗？：https://juejin.cn/post/7124104703884918798
+
+    function Person(){
+      this.name = 'jack';
+      this.age = 30;
+    }
+
+    let person = new Person();
+
+    // 查看person对象都有哪些属性和方法
+    console.log(person)
+
+    // 可以同时姓名和年龄
+    console.log(person.name, person.age)
+
+    // 也可以使用占位符进行输出
+    console.log('姓名：%s，年龄：%d', person.name, person.age)
+
+    // 以可折叠列表的方式，打印对象的内容
+    console.dir(person)
+
+    console.error('打印错误信息', person)
+
+    console.warn('控制台警告信息输出', person)
+  
+    // 计时开始
+    console.time() 
+
+    for(let i=0; i<10; i++){
+      // to-do 
+      console.count();
+    }
+
+    // 计时结束
+    console.timeEnd()
+
+
+    // 清空控制台打印
+    // console.clear()
+    
+    
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
