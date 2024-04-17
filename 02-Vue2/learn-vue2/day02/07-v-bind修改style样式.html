@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .progress {
+        height: 25px;
+        width: 400px;
+        border-radius: 15px;
+        background-color: #272425;
+        border: 3px solid #272425;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+      }
+
+      .inner {
+        width: 50%;
+        height: 20px;
+        border-radius: 10px;
+        text-align: right;
+        position: relative;
+        background-color: #409eff;
+        background-size: 20px 20px;
+        box-sizing: border-box;
+        transition: all 1s;
+      }
+
+      .inner span {
+        position: absolute;
+        right: -20px;
+        bottom: -25px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="progress">
+        <!-- 
+        v-bind指令修饰符修改 style 样式
+        语法格式:
+          <div class="box" :style="{ css属性1: '值1', css属性2: '值2', css属性3: '值' }"></div>
+        适用场景：对某个具体css属性的动态设置
+
+       -->
+
+        <div class="inner" :style="{ width: percent + '%' }">
+          <span>{{ percent }}%</span>
+        </div>
+      </div>
+      <button @click="percent = 25">设置25%</button>
+      <button @click="percent = 50">设置50%</button>
+      <button @click="percent = 75">设置75%</button>
+      <button @click="percent = 100">设置100%</button>
+
+      <div
+        :style="{ width: '100px', height: '100px', 'background-color': color }"
+        @click="changeColor"
+      ></div>
+    </div>
+    <script src="../day01/js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          percent: 0,
+          color: 'pink',
+        },
+        methods: {
+          changeColor() {
+            this.color = this.getRandomColor();
+          },
+          getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

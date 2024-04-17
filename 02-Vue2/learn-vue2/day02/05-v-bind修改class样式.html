@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-指令修饰符+v-bind修饰符</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+      .bg-color {
+        background-color: pink;
+      }
+      .border {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- v-bind修饰符
+      v-bind修饰符 对于样式操作的增强
+
+      为了方便开发者进行样式控制，Vue扩展了v-bind语法，可以针对 class类名 或者 style 行内样式 进行控制。
+
+      1、v-bind 操作class
+      方式1：通过 bool 控制是否添加这个类
+      <div class="box" :class="{ 类名1: bool, 类名2: bool}"></div>
+      适用场景：几个类名，来回切换。
+
+      方式2：数组中所有的类，都添加到类上
+      <div class="box" :class="[ '类名1'，'类名2'，'类名3']"></div>
+      适用场景：批量添加或删除类
+
+      注意：数组的方式需要加引号
+
+   -->
+    <div id="app">
+
+      <div :class="{box: true, 'bg-color': box1Color, border: 2 > 1}">
+        <button @click="changeBox1">改变颜色</button>
+      </div>
+
+      <div :class="[ 'box', box2Color ? 'bg-color' : '' , 'border' ]">
+        <button @click="changeBox2">改变颜色</button>
+      </div>
+      
+      <div></div>
+
+    </div>
+
+    <script src="../day01/js/vue.js"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          box1Color: false,
+          box2Color: false,
+        },
+        methods: {
+          changeBox1() {
+            this.box1Color = !this.box1Color
+          },
+          changeBox2() {
+            this.box2Color = !this.box2Color
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
