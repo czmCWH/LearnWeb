@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-reduce数组求和</title>
+</head>
+<body>
+  <script>
+    let arr = [2, 3, 7, 9]
+
+    /** 方式一，reduce 执行不带初始值
+     * reduce((累加的和, 数组元素) => {
+     *    return 累加的和 + 数组元素
+     * })
+     */
+    let sum = arr.reduce((total, curr) => {
+      return total + curr
+    })
+    console.log('----1=', sum)
+
+    /** 方式二，累加带初始值，更通用
+     * let 结果 = arr.reduce((累加的和, 数组元素) => {
+     *   return 累加的和 + 数组元素
+     * }, 初始值)
+     */
+    
+    let sum2 = arr.reduce((total, curr) => {
+      return total + curr
+    }, 100)
+    console.log('----2=', sum2)
+ 
+
+    /** 应用
+     * 如果用方式一求和，下面对象求和，就无法实现，只能通过方式二实现
+     * 因为方式1中，第一次循环 total 的值是对象，第二循环total的值是 int
+    */
+
+    let list = [
+      { id: 1, name: '篮球',  num: 2},
+      { id: 2, name: '足球球',  num: 8},
+      { id: 3, name: '乒乓球',  num: 6},
+    ]
+
+    let listSum = list.reduce((total, curr) => {
+      return total + curr.num
+    }, 0)
+    console.log('---listSum =', listSum)    
+
+
+</script>
+</body>
+</html>

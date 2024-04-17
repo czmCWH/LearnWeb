@@ -10,10 +10,21 @@
   <div id="app">  
     <h3>开心屋书架</h3>
     <ul>
-      <li v-for="item in booksList">
+      <!-- 
+        v-for中的 key 一般声明为 int、string 
+        其作用是给元素添加唯一标识，表示v-for中每个元素是唯一的。
+        
+        如果不加key，v-for的默认行为会尝试原地修改元素，就地复用，这样会导致复用样式错误。
+          如下如果勾选 index=1 的复选框，那么删除 index=0 时，复选框会显示错误。
+          
+        如果加上key，便于Vue进行列表项的正确排序复用。
+
+      -->
+      <li v-for="item in booksList" key="item.id">
+        <input type="checkbox"/>
         <span>{{ item.name }}</span>
         <span>{{ item.author }}</span>
-        <button>删除</button>
+        <button @click="delHandle(item.id)">删除</button>
       </li>
     </ul>
 
@@ -33,6 +44,14 @@
           {id:3, name: '《水浒传》', author: '施耐庵'},
           {id:4, name: '《三国演义》', author: '罗贯中'},
         ]
+      },
+      methods: {
+        delHandle(id) {
+          console.log('删除', id)
+          this.booksList = this.booksList.filter(item => {
+            return item.id !== id
+          })
+        }
       }
     })
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-事件修饰符</title>
+    <style>
+      .father {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        margin-top: 20px;
+      }
+
+      .son {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1、事件修饰符
+      
+      @click.stop=fn 阻止冒泡，
+        事件冒泡是点击了子盒子，父盒子的事件也会执行。
+        阻止冒泡，是当点击子盒子时，父盒子事件不执行。
+
+      @click.prevent=fn 阻止默认行为。
+        比如：a、form 标签都会有默认行为。
+        点击a标签时，会默认跳转。
+        form标签中点击提交时，会自动提交。
+     -->
+
+      <div @click="fatherAction" class="father">
+        <div @click.stop="sonAction" class="son"></div>
+      </div>
+
+      <a href="http://www.baidu.com" @click.prevent="fn3">阻止默认行为</a>
+    </div>
+
+    <script src="../day01/js/vue.js"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          fatherAction() {
+            console.log("点击父盒子");
+          },
+          sonAction() {
+            console.log("点击子盒子");
+          },
+          fn3() {
+            console.log("阻止a标签点击默认跳转");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

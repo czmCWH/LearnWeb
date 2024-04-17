@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 步骤1：准备一个容器，用于展示vue渲染的数据 -->
+  <div id="app">  
+    <!-- 
+      v-model指令
+      用于给表单元素使用，进行双向数据绑定。
+     -->
+     <div>用户名：<input v-model="uname" type="text"></div>
+     <div>密码：<input v-model="password" type="text"></div>
+     <button @click="login">登录</button>
+     <button @click="reset">重置</button>
+  </div>
+
+  <!-- 步骤2：导入vue包  -->
+   <script src="./js/vue.js"></script>
+
+   <script>
+    // 步骤3：创建 Vue 实例对象
+    let app = new Vue({
+      el: '#app',   
+      data: {
+        uname: '张三',
+        password: '',
+      },
+      methods: {
+        login() {
+          console.log(this.uname, this.password)
+        },
+        reset() {
+          this.uname = ''
+          this.password = ''
+        }
+      }
+    })
+
+    console.log(app)
+
+   </script>
+
+</body>
+</html>

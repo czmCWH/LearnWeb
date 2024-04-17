@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-按键修饰符(@keyup、@keydown)</title>
+</head>
+<body>
+  <!-- 指令修饰符 
+
+    v-bind 对于样式操作的增强；v-model应用于其他表单元素。
+
+    通过 . 符号指明一些指令后缀，不同后缀封装了不同的处理操作。主要用于简化代码
+    
+   -->
+
+   <div id="app">
+    <!-- 1、按键修饰符 
+      @keyup @keydown
+
+      @keyup.enter=fn 获取按键回车键事件
+      @keyup.esc=fn 
+      @keyup.49=fn  .49表示键盘按键1的编号，获取该按键事件
+     -->
+    <input type="text" @keyup.enter="clickEnter"/>
+   </div>
+  
+   <script src="../day01/js/vue.js"></script>
+   <script>
+    let app = new Vue({
+      el: '#app',  
+      data: {
+      },
+      methods: {
+        clickEnter() {
+          console.log('选中输入框，按了回车键')
+        }
+      }
+    })
+
+   </script>
+
+</body>
+</html>
