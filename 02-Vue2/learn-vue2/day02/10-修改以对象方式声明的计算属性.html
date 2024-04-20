@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-修改计算属性</title>
+  <style>
+    span {
+      display: inline-block;
+      width: 50px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <span>姓：</span><input type="text" v-model="xing"><br><br>
+    <span>名：</span><input type="text" v-model="ming"><br><br>
+    
+    <!-- 通过 input 直接修改 通过函数方式定义的 fullName 计算属性会报错 -->
+    <span>姓名：</span><input type="text" v-model.lazy="fullName"><br />
+
+    <!-- 以对象的方式声明计算属性，直接修改其值，则不会报错 -->
+    <span>姓名：</span><input type="text" v-model.lazy="realName"><br />
+
+  </div>
+
+  <script src="../day01/js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        xing: '尼古拉斯',
+        ming: '赵四'
+      },
+      computed: {
+        // 方式1：函数方式声明计算属性
+        fullName() {
+          return this.xing + '*' + this.ming
+        },
+        // 方式2：对象方式声明计算属性，作用用于修改计算属性
+        realName: {
+          get() {
+            return this.xing + '*' + this.ming
+          },
+          set(val) {
+            // 直接修改计算属性时，set方法会被执行，val表示修改后的结果 
+            console.log(val)
+            let arr = val.split('*')
+            this.xing = arr[0]
+            this.ming = arr[1]
+          }
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+</html>

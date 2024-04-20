@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-计算属性</title>
+  <style>
+    table {
+      border: 1px solid #000;
+      text-align: center;
+      width: 300px;
+    }
+    th,
+    td {
+      border: 1px solid #000;
+    }
+    h3 {
+      position: relative;
+    }
+    span {
+      position: absolute;
+      left: 145px;
+      top: -4px;
+      width: 16px;
+      height: 16px;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: #e63f32;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 
+    计算属性
+    基于现有的数据，计算出来的新属性，依赖的数据变化，自动重新计算。
+    计算属性声明在 computed配置项中，一个计算属性对应一个有返回值的函数。
+    
+   -->
+
+  <div id="app">
+
+    <h3>小黑的礼物清单🛒<span>{{ total }}</span></h3>
+    <table>
+      <tr>
+        <th>名字</th>
+        <th>数量</th>
+      </tr>
+      <tr v-for="item in list" :key="item.id">
+        <td>{{ item.name }}</td>
+        <td>{{ item.num }}个</td>
+      </tr>
+    </table>
+
+    <!-- 模板中，使用计算属性，和使用变量一样，直接使用属性名称。 -->
+    <p>礼物总数：{{ total }} 个</p>
+
+  </div>
+
+  <script src="../day01/js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: 1, name: '篮球', num: 3 },
+          { id: 2, name: '玩具', num: 100 },
+          { id: 3, name: '文具', num: 20 },
+        ],
+      },
+      computed: {
+        // 定义 total 计算属性
+        total() {
+          let t = 0
+          this.list.forEach(item => {
+            t += item.num
+          })
+          // ！！！！ 计算属性有缓存功能，如上使用了2次 total。但只打印一次。
+          console.log('---计算属性执行了')
+          return t
+        }
+      },
+      methods: {
+        
+      }
+    })
+  </script>
+</body>
+</html>
