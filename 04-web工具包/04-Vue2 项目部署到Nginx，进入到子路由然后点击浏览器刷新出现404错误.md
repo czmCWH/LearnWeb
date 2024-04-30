@@ -1,0 +1,47 @@
+# Vue2 项目部署到Nginx，进入到子路由然后点击浏览器刷新出现404错误
+
+解决办法：<https://vue3js.cn/interview/vue/404.html#%E4%B8%80%E3%80%81%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2>
+
+
+产生问题的本质是因为我们的路由是通过JS来执行视图切换的，
+
+当我们进入到子路由时刷新页面，web容器没有相对应的页面此时会出现404
+
+所以我们只需要配置将任意页面都重定向到 index.html，把路由交由前端处理
+
+对nginx配置文件.conf修改，添加try_files $uri $uri/ /index.html;
+
+```shell
+server {
+  listen  80;
+  server_name  www.xxx.com;
+
+  location / {
+    index  /data/dist/index.html;
+    try_files $uri $uri/ /index.html;
+  }
+}
+```
+
+修改完配置文件后记得配置的更新
+
+```shell
+nginx -s reload
+```
+
+这么做以后，你的服务器就不再返回 404 错误页面，因为对于所有路径都会返回 index.html 文件
+
+为了避免这种情况，你应该在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面
+
+```shell
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '*', component: NotFoundComponent }
+  ]
+})
+
+```
+
+关于后端配置方案还有：Apache、nodejs等，思想是一致的，这里就不展开述说了
+
