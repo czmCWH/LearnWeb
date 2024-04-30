@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Vue生命周期</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{ title }}</h2>
+    <div>
+      <button @click="count--">-</button>
+      <span>{{ count }}</span>
+      <button @click="count++">+</button>
+    </div>
+  </div>
+
+  <script src="../day01/js/vue.js"></script>
+  <script src="../day01/js/axios.js"></script>
+  <script>
+    /** 1、Vue生命周期
+     * Vue生命周期是指一个 Vue 实例从创建到销毁的整个过程。
+     * 生命周期四个阶段：创建、挂载、更新、销毁
+     * 
+     * > 创建阶段发送请求获取数据
+     * > 挂载阶段会进行渲染模版，可以操作DOM.
+     * 
+     * 2、Vue生命周期函数(钩子函数)会自动执行的函数
+     * Vue生命周期过程中，会自动运行一些函数，被称为【生命周期钩子】，开发者在其中编写自己的代码
+     * 
+     */
+    const app = new Vue({
+      el: '#app',
+      // 存数据
+      data: {
+        title: '生命周期钩子函数演示',
+        count: 100
+      },     
+      // 创建阶段，此时不能使用 data 中的数据，也不能调用 methods 中的方法
+      beforCreate() {
+        console.log('beforCreate', this.count)
+      },
+      created() {
+        // 此时可以使用 data 中的数据和 methods 中的方法
+        console.log('created', this.count)
+      },
+      // 挂载阶段（渲染页面）
+      beforeMount() {
+        console.log('beforMount', document.querySelector('h2'))
+      },
+      mounted() {
+        // 渲染完成，可以进行 DOM 操作
+        console.log('mounted', document.querySelector('h2'))
+      },  
+      // 更新阶段，此时数据更新了，页面还没有更新
+      beforeUpdate() {
+        console.log('beforeUpdate', this.count, document.querySelector('span').innerHTML)
+      },
+      updated() {
+        console.log('updated', this.count, document.querySelector('span').innerHTML)
+      },
+      // 销毁阶段
+      beforDestory() {
+        // 数据还有
+        console.log('beforDestory', this.count)
+      },
+      destory() {
+        // 数据已经清楚
+        console.log('destory', this.count)
+      }, 
+
+      methods: {},  // 存方法
+      computed: {}, // 放计算属性
+      watch: {},    // 放侦听器
+
+    })
+  </script>
+</body>
+</html>

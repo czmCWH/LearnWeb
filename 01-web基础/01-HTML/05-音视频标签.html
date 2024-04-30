@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-音视频标签</title>
+  </head>
+  <body>
+    <div>
+      <!-- 
+        1、audio 音频标签
+        <audio 
+          src="音频的URL(支持 MP3、Ogg、Wav)"  
+          controls="controls"        显示音频控制面板
+          loop="loop"                 循环播放
+          autoplay="autoplay"         自动播放，为了提升用户体验，旧版本的浏览器一般禁用自动播放功能
+        ></audio>
+      -->
+      <audio
+        src="./media/"
+        controls="controls"
+        loop="loop"
+        autoplay="autoplay"
+      ></audio>
+      <!--  在HTML5标签中，标签的属性名和属性名相同时，可以只写属性名。 -->
+      <audio src="./media/" controls loop autoplay></audio>
+
+      <!-- 
+        2、视频标签
+        <video 
+          src="视频URL，支持格式：MP4、WebM、Ogg"
+          controls="controls"     显示视频控制面板
+          loop="loop"             循环播放
+          muted="muted"           静音播放
+          autoplay="autoplay"     自动播放，为了提升用户体验，浏览器仅支持在静音状态自动播放
+        ></video>
+       -->
+      <video src="" autoplay controls loop muted></video>
+
+       <!-- 从bilibil网站引入视频，进入视频播放>分享>嵌入代码>回来粘贴 -->
+      <iframe src="//player.bilibili.com/player.html?aid=1751889534&bvid=BV15x421y7zk&cid=1474695603&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+    </div>
+  </body>
+</html>

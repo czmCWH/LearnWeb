@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="../day01/css/bootstrap.min.css" />
+  <style>
+    .red {
+      color: red !important;
+    }
+
+    .search {
+      width: 300px;
+      margin: 20px 0;
+    }
+
+    .my-form {
+      display: flex;
+      margin: 20px 0;
+    }
+
+    .my-form input {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .table> :not(:first-child) {
+      border-top: none;
+    }
+
+    .contain {
+      display: flex;
+      padding: 10px;
+    }
+
+    .list-box {
+      flex: 1;
+      padding: 0 30px;
+    }
+
+    .list-box a {
+      text-decoration: none;
+    }
+
+    .echarts-box {
+      width: 600px;
+      height: 400px;
+      padding: 30px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    tfoot {
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 1000px) {
+      .contain {
+        flex-wrap: wrap;
+      }
+
+      .list-box {
+        width: 100%;
+      }
+
+      .echarts-box {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="contain">
+      <!-- 左侧列表 -->
+      <div class="list-box">
+
+        <!-- 添加资产 -->
+        <form class="my-form">
+          <input type="text" class="form-control" placeholder="消费名称" v-model="form.name" />
+          <input type="text" class="form-control" placeholder="消费价格" v-model.number="form.price" />
+          <!-- 
+            form 里面点击 button 按钮就会默认提交
+             > 添加 type="button" 就不会导致 form 表单自动提交；
+             > 否则就需要阻止 form 表单的默认行为。
+           -->
+          <button type="button" class="btn btn-primary" @click="add">添加账单</button>
+        </form>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>编号</th>
+              <th>消费名称</th>
+              <th>消费价格</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr v-for="(item, index) in list" :key="item.id">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td :class="{ red: item.price > 500 }">{{ item.price }}</td>
+              <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">消费总计： 298.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- 右侧图表 -->
+      <div class="echarts-box" id="main"></div>
+    </div>
+  </div>
+  <script src="../day01/js/echarts.min.js"></script>
+  <script src="../day01/js/vue.js"></script>
+  <script src="../day01/js/axios.js"></script>
+  <script src="../day01/js/abc.js"></script>
+  <script>
+    /**
+     * 接口文档地址：
+     * https://www.apifox.cn/apidoc/shared-24459455-ebb1-4fdc-8df8-0aff8dc317a8/api-53371058
+     * 
+     * 功能需求：
+     * 1. 基本渲染
+     * 2. 添加功能
+     * 3. 删除功能
+     * 4. 饼图渲染
+     */
+    const app = new Vue({
+      el: '#app',
+      data: {
+        // myChart: '',
+        list: [], // 准备存储接口返回的数据
+        form: {
+          creator: creator,
+          name: '',
+          price: ''
+        }
+      },
+      async created() {
+        this.getList() // 方法，加小括号
+      },
+      mounted() {
+        this.createChart() // 调用创建图表的方法
+      },
+      methods: {
+        // 获取数据
+        async getList() {
+          const { data: res } = await axios({
+            url: 'https://applet-base-api-t.itheima.net/bill',
+            params: {
+              creator: creator
+            }
+          })
+          // console.log(res)
+          this.list = res.data // 把服务器返回的结果，赋值给 Vue中的数据
+          // 获取到接口返回的数据之后，更换图表中的数据
+          this.myChart.setOption({
+            series: [
+              {
+                data: this.list.map(item => {
+                  return { value: item.price, name: item.name }
+                }),
+              }
+            ]
+          })
+        },
+        // 添加操作
+        async add() {
+          const { data: res } = await axios.post('https://applet-base-api-t.itheima.net/bill', this.form)
+          // console.log(res)
+          this.getList() // 调用方法，重新获取数据
+          this.form.name = this.form.price = ''
+        },
+        // 删除操作
+        async del(id) {
+          const { data: res } = await axios({
+            method: 'DELETE',
+            // url: 'https://applet-base-api-t.itheima.net/bill/' + id
+            url: `https://applet-base-api-t.itheima.net/bill/${id}`
+          })
+          // console.log(res);
+          this.getList() // 调用函数，重新获取数据
+        },
+        // 创建图表的方法
+        createChart() {
+          this.myChart = echarts.init(document.querySelector('#main'))
+          // let option = {}
+          this.myChart.setOption({
+            title: {
+              text: '消费清单',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'item'
+            },
+            legend: {
+              orient: 'vertical',
+              left: 'left'
+            },
+            series: [
+              {
+                name: '老汤的消费清单',
+                type: 'pie',
+                radius: '50%',
+                // data: [
+                //   { value: 1048, name: '皮鞋' },
+                //   { value: 735, name: '毛衣' },
+                // ],
+                emphasis: {
+                  itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+                }
+              }
+            ]
+          })
+
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

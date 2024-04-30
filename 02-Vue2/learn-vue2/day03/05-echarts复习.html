@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-echarts复习</title>
+  </head>
+  <body>
+    <div id="main" style="width: 400px; height: 300px"></div>
+    <button>更换数据</button>
+
+    <script src="../day01/js/echarts.min.js"></script>
+    <script>
+      /*
+        Apache ECharts 一个基于 JavaScript 的开源可视化图表库：https://echarts.apache.org/zh/index.html
+        
+      */
+
+      // 创建图表的基本步骤
+      let myChart = echarts.init(document.querySelector("#main"));
+      let option = {
+        title: {
+          text: "消费清单",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+        },
+        series: [
+          {
+            name: "我家的消费清单",
+            type: "pie",
+            radius: "50%",
+            data: [
+              { value: 100, name: "鞋子" },
+              { value: 735, name: "日用品" },
+              { value: 580, name: "吃饭" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+
+      // 点击按钮更换数据
+      document.querySelector("button").addEventListener("click", function () {
+        console.log("更换数据");
+        myChart.setOption({
+          series: [
+            {
+              data: [
+                { value: 200, name: "鞋子" },
+                { value: 335, name: "日用品" },
+                { value: 580, name: "吃饭" },
+              ],
+            },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>

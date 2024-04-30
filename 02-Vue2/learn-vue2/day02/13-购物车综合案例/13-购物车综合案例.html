@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/inputnumber.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <title>购物车</title>
+    <title>13-购物车综合案例</title>
   </head>
   <body>
     <div class="app-container" id="app">
@@ -90,7 +90,7 @@
         el: '#app',
         data: {
           // 水果列表
-          fruitList: [
+          fruitList: JSON.parse(localStorage.getItem('fruitList')) || [
             {
               id: 1,
               icon: './img/火龙果.png',
@@ -127,6 +127,15 @@
               price: 34,
             },
           ],
+        },
+        watch: {
+          fruitList: {
+            deep: true,   // 侦听对象必须使用 deep
+            handler(val) {
+              // 监听 fruitList JSON对象的变化，并存储到 localStorage，避免网页刷新数据没有了。
+              localStorage.setItem('fruitList', JSON.stringify(val))
+            } 
+          }
         },
         methods: {
           del(id) {

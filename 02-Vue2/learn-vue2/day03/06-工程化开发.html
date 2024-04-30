@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Vue生命周期</title>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+
+  <script src="../day01/js/vue.js"></script>
+  <script src="../day01/js/axios.js"></script>
+  <!-- 
+    工程化开发：
+      组件化：便于页面复用；
+      模块化：比如：npm vue，使用什么插件安装一下就可以了。
+
+    开发Vue的两种方式：
+      1、核心包传统开发模式：基于 html/css/js 文件，直接引入核心包，开发Vue。
+      2、工程化开发模式：基于构建工具（例如：webpack）的环境中开发 Vue。
+
+    脚手架一般是指 npm 上的发布的软件包。
+    脚手架 Vue CLI 是 Vue 官方提供的一个全局命令工具。可以帮助我们快速创建一个开发Vue项目的标准化基础架子。【并且已经集成了webpack配置】
+    
+    Vue CLI官网：https://cli.vuejs.org/zh/guide/
+    1、安装 Vue CLI 命令：npm i -g @vue/cli
+    2、创建 Vue 项目命令：vue create 07-project
+
+    注意事项：
+      1、对于 vue2 项目来说，使用 vscode 打开项目必须直接打开项目的根目录
+      2、安装 vsCode 插件：
+          代码提示插件：Vue VSCode Snippets
+          代码高亮插件：Vue - Official
+   -->
+  <script>
+    const app = new Vue({
+      el: '#app',
+      // 存数据
+      data: {
+
+      },
+      // 放侦听器
+      watch: {
+
+      },    
+      // 勾子函数，最先执行的函数，自动执行
+      created() {
+
+      },  
+      // 可以进行 DOM 操作
+      mounted() {
+
+      },        
+      // 存方法
+      methods: {
+
+      },  
+      // 放计算属性
+      computed: {
+
+      }
+    })
+  </script>
+</body>
+</html>
