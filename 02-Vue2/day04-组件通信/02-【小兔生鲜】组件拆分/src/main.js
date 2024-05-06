@@ -6,6 +6,10 @@ import './assets/iconfont/iconfont.css' // 字体图标的样式
 
 Vue.config.productionTip = false
 
+import MyGoods from './components/MyGoods.vue'
+
+Vue.component('MyGoods', MyGoods)
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
