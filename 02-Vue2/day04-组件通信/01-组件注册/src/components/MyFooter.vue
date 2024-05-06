@@ -1,5 +1,6 @@
 <template>
   <div class="footer">
+    <!-- 使用导入的全局组件 -->
     <MyButton></MyButton>
     <MyButton />
     <my-button />

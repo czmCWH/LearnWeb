@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <!-- 3、使用导入的组件 -->
+    <!-- 3、使用导入的组件的3种写法 -->
     <MyHeader></MyHeader>
     <MyMain />
     <my-footer></my-footer>
