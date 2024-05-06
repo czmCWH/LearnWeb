@@ -10,7 +10,10 @@
 import GrandSon from './GrandSon.vue'
 export default {
   name: 'son-page',
+  
+  // 2. 子/孙组件 inject 取值使用
   inject: ['user'],
+
   components: {
     GrandSon
   }

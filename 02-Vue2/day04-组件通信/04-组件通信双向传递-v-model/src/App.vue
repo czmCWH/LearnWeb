@@ -5,6 +5,16 @@
     <p>结论：v-model 可以拆分为 :value + @input</p>
     <hr />
 
+    <!-- 
+      v-model本质上是一个语法糖。例如应用在输入框上，就是 value属性 和 input事件 的合写。
+      用于提供数据的双向绑定。
+      
+      * 数据变，视图跟着变 :value
+      * 视图变，数据跟着变 @input
+      
+    注意：$event 用于在模板中，获取事件的形参
+     -->
+
     <h3>需求2：实现输入框组件的v-model</h3>
     <!-- <MyInput v-model="age"></MyInput> -->
     <!-- <MyInput :value="age" @input="changeAge"></MyInput> -->

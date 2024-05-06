@@ -12,6 +12,7 @@
 </template>
 <!-- 
 
+  利用 ref 和 $refs 可以用于 获取 dom 元素, 或 组件实例
   refs 只会查找当前组件中的元素，document.querySelector 是在整个页面中找元素。
 
  -->

@@ -10,6 +10,7 @@ import bus from '@/bus' // @ 代表src文件夹
 export default {
   methods: {
     send () {
+      // 3. B 组件(发送方)，触发 Bus 实例的事件
       bus.$emit('abc', 123123123)
     }
   }

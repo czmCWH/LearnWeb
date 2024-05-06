@@ -4,10 +4,20 @@
   </div>
 </template>
 
+<!-- 
+  非父子通信 (拓展) - provide & inject
+
+  provide & inject 作用：跨层级共享数据。
+
+
+ -->
+
 <script>
 import Son from './components/Son.vue'
 // import { computed } from 'vue'
 export default {
+  
+  // 1. 父组件 provide 提供数据
   provide: {
     // 传递给后代组件的数据，父组件与子组件共享数据
     // 传递的对象是响应式的
