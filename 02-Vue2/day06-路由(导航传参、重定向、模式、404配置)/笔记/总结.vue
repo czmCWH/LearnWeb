@@ -1,0 +1,193 @@
+
+<!-- 1、配置 router 组件
+
+  黑马笔记：https://gitee.com/laotang1234/157vue/blob/master/Vue%E5%9F%BA%E7%A1%80-06/02-%E7%AC%94%E8%AE%B0/day06.md#day06
+  Vue Router 3： https://v3.router.vuejs.org/zh/installation.html，
+
+  1、安装 Vue Router：
+    npm install vue-router@3.6.5
+
+  * 注意 vue-router 3.0，仅适用于 Vue 2.0。
+
+  2、使用 vue-router 组件步骤
+
+  // 1、引入 vue-router 组件
+  import VueRouter from 'vue-router'
+ 
+  // 2、注册路由
+  Vue.use(VueRouter)
+
+  // 3、创建路由对象
+  const router = new VueRouter()
+
+  // 4、注入，将路由对象注入到new Vue实例中，建立关联
+  new Vue({
+    render: h => h(App),
+    router
+  }).$mount('#app')
+
+ -->
+
+ <!-- 2、路由传参方式
+  
+  * router-link 链接是声明式导航
+
+  --------------1、查询传参
+  1.1、router-link 挂载好合适的参数
+  * 规则：to="/path?参数名=值&参数名2=值"
+  <router-link :to="'/discover/artlist?id=' + item.id">跳转</router-link>
+
+  1.2、在路由到的页面获取传递过来的参数
+  this.$router.query.参数名
+
+
+  --------------2、动态路由传参
+  * 动态路由后面的参数可以随便起名，但要有语义
+  
+  2.1、配置动态路由
+  const router = new VueRouter({
+  routes: [
+      ...,
+      { 
+        // 'toplist/:id/:name?'
+        // :name?表示参数name可选，即可以不传，但是只能设置一个参数可选。如果配置了参数，但是不传会报错。
+        path: 'toplist/:name?', 
+        component: Search 
+      }
+    ]
+  })
+
+  2.2、配置导航链接
+  <router-link :to="`/discover/toplist/${item.name}`">跳转</router-link>
+
+  2.3、在路由到的页面获取传递过来的参数
+  * params后面的参数名要和动态路由配置的参数保持一致
+  this.$route.params.参数名
+
+  -------------- 对比总结
+  * 查询参数传参 (比较适合传多个参数)
+  * 动态路由传参 (优雅简洁，传单个参数比较方便)；动态路由也可以传多个参数，但一般只传一个。
+
+  -->
+
+  <!-- 3、路由重定向
+
+    { path: 匹配路径, redirect: 重定向到的路径 },
+    比如：重定向 → 匹配 / 后, 强制跳转 /home 路径
+    { path:'/' ,redirect:'/home' }
+
+    const routes = [
+    { 
+      path: '/', 
+      redirect: '/discover/tuijian' 
+    }]
+
+  * 当浏览器访问 localhost:8080，路径后面会自动添加了 /#/
+   -->
+
+   <!-- 4、Vue路由-模式设置
+
+    * hash路由(默认) 例如: http://localhost:8080/#/home
+  
+    * history路由(常用) 例如: http://localhost:8080/home (以后上线需要服务器端支持，开发环境webpack给规避掉了history模式的问题)
+
+    const router = new VueRouter({
+      mode: 'history' 
+      //...
+    })
+    -->
+
+  <!-- 5、Vue路由-404
+    当路径找不到匹配时，给个提示页面
+
+    404的路由，虽然配置在任何一个位置都可以，但一般都配置在其他路由规则的最后面
+
+    path: "*" (任意路径) – 前面不匹配就命中最后这个
+
+    const router = new VueRouter({
+      routes: [
+        ...
+        { path: '*', component: NotFind } //最后一个
+      ]
+    })
+   -->
+
+
+  <!-- 6、router-link 高亮
+    
+    当我们使用 router-link 跳转时，自动给当前导航加了两个类名，可以使用这2个类型对其样式进行修改。
+      router-link-active    模糊匹配（用的多）
+      router-link-exact-active  精确匹配
+
+
+    // 4. 创建路由的实例对象
+    const router = new VueRouter({
+      // router-link的两个高亮类名 太长了，我们希望能定制怎么办
+      linkActiveClass: 'aa',
+      linkExactActiveClass: 'bb'
+    })
+   -->
+
+<!-- 7、编程式导航
+
+* 编程式导航：表示调用 API 方式实现导航的方式，叫做编程式导航，比如之前的：
+  location.href='xxxx'
+  history.go(-1) 
+
+在 vue-router 中也有类似的功能：
+this.$router.方法名()
+this.$router.back()   后退
+this.$router.forward()  前进
+this.$router.push() 跳转到指定的一个地址，并添加一条历史记录，添加了历史记录才能进行前进后退。
+
+this.$router.replace()    跳转到一个指定的地址，只替换当前地址，并不会增加历史记录
+this.$router.go(n)    前进或后退，go(1) 前进一次，go(-1)后退一次
+
+------ 7.1、.path路径跳转传参
+
+*** query传参
+//简单写法
+this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
+//完整写法
+this.$router.push({
+  path: '/路径',
+  query: {
+    参数名1: '参数值1',
+    参数名2: '参数值2'
+  }
+})
+接受参数的方式依然是：this.$route.query.参数名
+
+
+*** 动态路由传参
+//简单写法
+this.$router.push('/路径/参数值')
+//完整写法
+this.$router.push({
+  path: '/路径/参数值'
+  // 注意：此处不能配合 params 使用
+})
+
+接受参数的方式依然是：this.$route.params.参数值
+
+
+------ 7.2、name 命名路由跳转传参
+
+*** query传参
+this.$router.push({
+  name: '路由名字',
+  query: {
+    参数名1: '参数值1',
+    参数名2: '参数值2'
+  }
+})
+
+*** 动态路由传参
+this.$router.push({
+  name: '路由名字',
+  params: {
+    参数名: '参数值',
+  }
+})
+
+ -->

@@ -1,0 +1,10 @@
+
+router/index.js   -> 配置路由规则，即那个路由地址对应展示哪个组件
+
+DisCover.vue  ->  实现嵌套路由
+
+ArtList.vue  ->  路由查询传参
+
+TopList.vue -> 动态路由传参
+
+Follow.vue  ->  路由传参
