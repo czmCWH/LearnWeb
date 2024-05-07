@@ -17,18 +17,19 @@
     this.isShowEdit = true // 显示输入框
     this.$refs.inp.focus() // 获取焦点
   问题："input 标签显示之后"，立刻获取焦点是不能成功的！
-  原因：Vue 是 异步更新 DOM (提升性能)
+  原因：Vue 的数据是同步更新， DOM 是异步更新 (提升性能)。如果视图是同步更新的，那么导致多次渲染，浪费不必要的性能。
 
 
   Vue异步更新、$nextTick
   $nextTick：等 DOM 更新后, 才会触发执行此方法里的函数体
 
-
-  
-  1. Vue是异步更新 DOM 的
-  2. 想要在 DOM 更新完成之后做某件事，可以使用 $nextTick
+  使用场景：
+  1、想要在修改数据后立刻得到更新后的DOM结构，可以使用 $nextTick。
+  2、在 created 生命周期中进行DOM操作。
   this.$nextTick(() => {
-    // 业务逻辑
+    // 数据更新后，等DOM也更新后，执行此处代码。
+    // 可以执行修改 DOM 操作。
+
   })
  -->
 <script>
