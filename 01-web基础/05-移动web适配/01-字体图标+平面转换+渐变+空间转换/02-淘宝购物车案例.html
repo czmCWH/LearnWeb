@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-字体图标购物车案例</title>
+  <link rel="stylesheet" href="./font_8d2ysqbx447/iconfont.css">
+  <style>
+    .cart-Empty-fill {
+      color: red;
+    }
+    /* 结构伪类选择器 */
+    li span:nth-child(1) {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>
+      <!-- 注意：有使用使用字体图标，类名需要加上 icon-  前缀 -->
+      <span class="iconfont icon-cart-Empty-fill"></span>
+      <span>购物车</span>
+      <span class="iconfont icon-arrow-down"></span>
+    </li>
+  </ul>
+</body>
+</html>

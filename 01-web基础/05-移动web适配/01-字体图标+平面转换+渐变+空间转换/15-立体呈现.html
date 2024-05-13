@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15-立体呈现</title>
+  <style>
+    body{
+      /* 设置视距 */
+      perspective: 800px;
+    }
+    .father {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      /* 父级下的某个子元素设置 3D 转换，必须给父级设置3D呈现 */
+      transform-style: preserve-3d;
+      transition: all 0.3s;
+    }
+    .father div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+    }
+    .son1 {
+      background-color: red;
+      /* 向Z轴移动100px，向前 */
+      transform: translateZ(100px);
+    }
+    .son2 {
+      background-color: blue;
+      /* 向Z轴移动-100px，向后 */
+      transform: translateZ(-100px);
+    }
+    .father:hover {
+      transform: rotateY(60deg);
+    }
+  </style>
+</head>
+<!-- 
+  使用 transform-style: preserve-3d 呈现立体图形。
+
+  perspective(透视) 是无法呈现立体图形的，它只能增加近大远小，近实远虚的视觉效果。
+
+  语法：transform-style: preserve-3d;
+  使元素处于真正的3d空间中。
+  默认值为 flat，表示子元素处于2d平面内呈现。
+
+  使用步骤：
+    1、给父盒子添加：transform-style: preserve-3d;
+    2、按需设置子盒子的 位置
+
+ -->
+<body>
+  <div class="father">
+    <div class="son1"></div>
+    <div class="son2"></div>
+  </div>
+</body>
+</html>

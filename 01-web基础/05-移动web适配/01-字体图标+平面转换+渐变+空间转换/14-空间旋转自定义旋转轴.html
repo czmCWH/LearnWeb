@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-空间旋转自定义旋转轴</title>
+  <style>
+     body {
+      perspective: 800px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      background-color: pink;
+      transition: all 0.3s;
+    }
+    .box:hover {
+      /* x, y, z 空间坐标，自定义轴终点坐标 */
+      transform: rotate3d(1, 1, 0, 60deg);
+    }
+  </style>
+</head>
+<!-- 
+  rotate3d(x, y, z, angle)：用来设置自定义旋转轴的位置及旋转的角度。x,y,z取值为 0～1。
+  解释：原点 和 (x,y,z) 连起来的向量作为旋转轴，angle作为绕此旋转轴的旋转的角度度数。
+ -->
+<body>
+    <div class="box">
+
+  </div>
+</body>
+</html>

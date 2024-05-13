@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-空间旋转</title>
+  <style>
+    body {
+      perspective: 800px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      background-color: pink;
+      transition: all 3s;
+    }
+    .box:hover {
+      /* Z 轴旋转和 平面旋转一样 */
+      /* transform: rotateZ(360deg); */
+      /* X 轴翻转 */
+      transform: rotateX(360deg);
+    }
+  </style>
+</head>
+<!-- 
+  空间旋转：使用 rotate 实现元素空间旋转效果。
+
+  语法：
+    transform: rotateX(角度值deg);
+    transform: rotateY(角度值deg);
+    transform: rotateZ(角度值deg);
+
+  旋转方向：左手握住旋转轴，拇指指向旋转轴的正方向，手指弯曲方向为旋转正值方向。
+
+ -->
+<body>
+
+  <div class="box">
+
+  </div>
+  
+</body>
+</html>

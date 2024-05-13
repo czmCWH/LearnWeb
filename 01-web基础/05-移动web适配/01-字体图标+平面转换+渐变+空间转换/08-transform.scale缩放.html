@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-transform.scale缩放</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+      margin: 100px auto;
+      transition: all 3s;
+    }
+    .box:hover {
+      transform: scale(2);
+    }
+  </style>
+</head>
+<!-- 
+  缩放
+    语法：transform: scale(x轴缩放倍数, y轴缩放倍数);
+  
+  使用技巧：
+    一般情况下，只为 scale 设置一个值，表示x轴y轴等比例缩放。
+    即：transform: scale(轴缩放倍数);
+    scale 值大于1表示放大；小于1表示缩小。
+
+  注意：
+    1、缩放 和 直接改变 width 和 height 的大小区别在于：缩放盒子会把盒子内所有元素一起缩放！！！
+    2、浏览器最小字体大小为 12px；如果需要修改则需要通过 缩放出来。
+ -->
+<body>
+  <div class="box">好好学习</div>
+</body>
+</html>

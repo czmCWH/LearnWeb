@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-位移居中</title>
+  <style>
+    .father {
+      position: relative;
+
+      width: 600px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+    .son {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 388px;
+      height: 166px;
+      background-color: #ccc;
+
+      /** 绝对定位盒子居中，方案1：通过 margin 调整
+       * 
+       * 通过修改 margin 让盒子居中，缺陷：必须计算盒子的宽高一半 
+      */
+      /* margin-left: -194px;
+      margin-top: -83px; */
+
+      
+      /**  绝对定位盒子居中，方案2：通过位移调整
+       * 优点：不用计算盒子宽高的一半
+      */
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="father">
+    <div class="son"></div>
+  </div>
+</body>
+</html>

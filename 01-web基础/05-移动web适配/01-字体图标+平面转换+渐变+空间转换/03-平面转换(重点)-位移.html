@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-平面转换(重点)</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px auto;
+      /* 添加变换过渡时间 */
+      transition: all 0.3s;
+    }
+    /* 鼠标悬浮时 */
+    .box:hover {
+      /* transform: translate(100px, 100px); */
+      /* 值为百分数时，表示移动自身宽度或高度的百分比距离 */
+      transform: translate(100%, 100%);
+    }
+
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px auto;
+      /* 添加变换过渡时间 */
+      transition: all 0.3s;
+    }
+  </style>
+</head>
+<!-- 
+  使用 CSS 的 transform 属性实现元素的位移、旋转、缩放等效果。
+
+  1、平面转换【重点】
+    > 改变盒子在平面内的形态(位移、旋转、缩放)
+    > 2D转换 direction
+
+  2、位移
+  语法：transform: translate(水平移动距离, 垂直移动距离);
+  取值(正负均可)
+    > 像素单位数值；
+    > 百分比(参照物为盒子自身尺寸)
+    注意：X轴正向为右，Y轴正向为下。
+ 
+  技巧
+    > translate() 只写一个值，表示沿着 X 轴移动
+    > 单独设置 X 或 Y 轴移动距离：translateX() 或 translateY()
+
+ -->
+<body>
+  <div class="box1"></div>
+  <div class="box"></div>
+</body>
+</html>

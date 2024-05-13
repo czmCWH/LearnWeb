@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-空间转换(了解)</title>
+  <style>
+    body {
+      /* 
+        必须设置 perspective视距大小，才能看见3D效果 
+
+        perspective视距值 表示盒子与电脑屏幕距离的初始化值；
+        视距值越小，盒子变化动作越剧烈；
+        视距值越大，盒子变化动作越弱。
+
+      */
+      perspective: 800px;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 100px auto;
+      transition: all 0.3s;
+    }
+    .box:hover {
+      transform: translate3d(100px, 100px, 100px);
+      /* transform: translateX(100%); */
+      /* transform: translateZ(100px); */
+      /* 没有效果，因为盒子没有厚度，设置相对于Z轴方向百分比相当于0 */
+      /* transform: translateZ(100%); */
+    }
+  </style>
+</head>
+<!-- 
+  1、空间转换
+    使用 transform 属性实现元素在空间内的位移、旋转、缩放等效果。
+    空间转换也叫 3D转换，x,y,z，z轴位置与视线方向相同。
+
+  2、语法：
+      transform: translate3d(x值, y值, z值);
+      transform: translateX(值);
+      transform: translateY(值);
+      transform: translateZ(值);
+  取值：正负均可，像素单位数值 或者 元素自身百分比 
+
+  3、perspective 属性用于实现透视效果
+    
+  Z轴方向是视线的方向，移动效果应该是距离的远或近，而设备屏幕是平面的，无法查看到远近效果。
+
+  * perspective 属性一般添加给body，取值为像素单位 800px～1200px；
+  * 作用是在空间转换时，给元素添加近大远小、近实远虚的视觉效果。
+
+
+ -->
+<body>
+  <div class="box"></div>
+</body>
+</html>

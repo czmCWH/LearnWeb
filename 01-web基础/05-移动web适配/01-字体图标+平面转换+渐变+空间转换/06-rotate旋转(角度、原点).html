@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-rotate旋转(角度、原点)</title>
+  <style>
+    .box {
+      width: 20px;
+      height: 200px;
+      background-color: #ccc;
+      margin: 100px auto;
+      transition: all 3s;
+      /*
+        设置旋转原点
+      */
+      /* transform-origin: 0 0; */
+
+      transform-origin: center bottom;
+    }
+    .box:hover {
+      /* 
+        设置旋转角度
+        1圈 == 360edg
+      */
+      transform: rotate(360deg);
+      
+    }
+  </style>
+</head>
+<!-- 
+  旋转：
+  
+  1、使用 rotate实现元素旋转效果。
+  
+  语法：transform: rotate(角度)
+        角度单位是 deg
+  取正值，顺时针旋转；负值，逆时针旋转。
+
+  注意：需要配置 transition 过渡效果。
+
+  
+  2、使用 transform-origin 属性改变转换原点
+
+  语法：transform-origin: 原点水平位置 原点垂直位置
+      默认圆点是盒子中心点
+
+  取值
+    * 方位名词（left、top、right、bottom、center），设置水平垂直方向
+    * 像素单位数值, (0, 0) 表示盒子左上角。
+    * 百分比(参照盒子自身尺寸计算)
+  
+  
+ -->
+<body>
+  <div class="box">1</div>
+</body>
+</html>

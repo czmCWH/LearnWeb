@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-平面转换复合属性</title>
+  <style>
+    img {
+      width: 200px;
+      height: 200px;
+      transition: all 3s;
+    }
+    img:hover {
+      /* 水平移动 800px，并且旋转2圈 */
+      transform: translateX(800px) rotate(720deg);
+      /* 
+        注意：如果 rotate 放在移动translate前面，会出现问题！！！
+        因为 移动translate 参照的坐标系是盒子本身，由于盒子先旋转，导致x、y轴方向发生了改变。 
+      */
+      /* transform: rotate(720deg) translateX(800px); */
+    }
+  </style>
+</head>
+<!-- 
+
+ -->
+<body>
+  <img class="img" src="./images/tyre.png" />
+</body>
+</html>

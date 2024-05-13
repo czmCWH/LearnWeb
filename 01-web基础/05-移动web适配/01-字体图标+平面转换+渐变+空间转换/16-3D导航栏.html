@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16-3D导航栏</title>
+  <style>
+    body {
+      perspective: 600px;
+    }
+
+    .father {
+      width: 200px;
+      height: 50px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+      /* 记住：某个父级元素下子元素设置3D转换，必须给父级元素设置3D呈现 */
+      transform-style: preserve-3d;
+      transition: all .3s;
+    }
+
+    .father div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 50px;
+    }
+
+    .son1 {
+      background-color: red;
+      transform: translateZ(25px);
+    }
+
+    .son2 {
+      background-color: palegreen;
+      transform: translateY(-25px) rotateX(90deg);
+    }
+
+    .father:hover {
+      transform: rotateX(-90deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="son1"></div>
+    <div class="son2"></div>
+  </div>
+
+  <!-- 1.父级下两个子元素，覆盖在一起，从同一个位置出发 -->
+  <!-- 2.第一个子元素:沿着Z+100px  第二个子元素沿着Z-100px -->
+  <!-- 了解:3D呈现 当有子元素做3D转换，一定给上级父级设置3D呈现 -->
+</body>
+
+</html>
