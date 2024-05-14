@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-3-rem基本概念</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 1. 给HTML标签加字号 
+      使用 rem 适配时，当设备的大小发生改变，把html的font-size(根子号)也改变，这样整个页面的元素大小也随之改变。
+      这需要借助 媒体查询。
+      */
+      html {
+        font-size: 30px;
+      }
+
+      /* 2. 使用rem单位书写尺寸 */
+      .box {
+        width: 5rem;  /* 1个rem 的大小等于1个 html的font-size的大小，即此时的width为 150px */
+        height: 3rem;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+  </body>
+</html>

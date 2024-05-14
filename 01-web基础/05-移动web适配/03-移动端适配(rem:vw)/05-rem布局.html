@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rem布局</title>
+  <style>
+    /* 
+      以375px设计稿适配一个 68px * 29px 大小的盒子。
+      通过 flexible.js 计算盒子的rem：
+      68 / 375/10 = 1.813rem;
+      29 / 375/10 = 0.773rem
+
+      问题：当CSS中的值需要计算时，是非常麻烦的，这是需要借助插件比如：less
+    */
+    div {
+      width: 1.813rem;
+      height: 0.773rem;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+
+  <script src="./js/flexible.js"></script>
+</body>
+</html>

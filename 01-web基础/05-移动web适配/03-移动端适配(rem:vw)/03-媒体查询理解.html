@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-媒体查询检测视口宽度</title>
+  <!-- 
+    1、媒体查询
+    
+    问题：手机屏幕大小不同、分辨率不同，如何设置对应的HTML标签font-size ？
+    即：使用媒体查询
+
+    媒体查询能够检测视口的宽度，然后编写差异化的CSS样式。
+    当某个条件成立，执行对应的CSS样式。
+
+   -->
+  <style>
+    /* 视口宽度是320，网页背景色是粉红色 */
+    @media (width:320px) {
+      body {
+        background-color: pink;
+      }
+    }
+
+    /* 视口宽度是375，网页背景色是绿色 */
+    @media (width:375px) {
+      body {
+        background-color: green;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+</body>
+</html>

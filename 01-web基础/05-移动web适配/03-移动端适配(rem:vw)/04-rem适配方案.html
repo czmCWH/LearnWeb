@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-rem适配方案</title>
+    <!-- 
+      问题：设备宽度不同，HTML标签字号设置多少合适？
+      1、设备宽度大，元素尺寸大
+      2、设备宽度小，元素尺寸小
+
+      rem
+      目前rem布局方案中，将网页登分成10份，HTML标签的字号为视口宽度的1/10。
+
+
+     -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 1. 使用媒体查询，给不同视口的屏幕设置不同的HTML字号 */
+      /* @media (width:320px) {
+        html {
+            font-size: 32px;
+        }
+      }
+      @media (width:375px) {
+        html {
+            font-size: 37.5px;
+        }
+      }
+      @media (width:414px) {
+        html {
+            font-size: 41.4px;
+        }
+      } */
+
+      /* 2. 使用rem单位书写尺寸 */
+      .box {
+        width: 5rem;
+        height: 3rem;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+
+    <!-- 
+      只通过媒体查询来设置 HTML的font-size 大小，这是不可预测的，因为设备特别多；设备的分辨率可以随意改变。
+
+      flexible.js 是手淘开发出的一个用来适配移动端的js库。
+      核心原理就是根据不同的视口宽度给网页中的html根节点设置不同的font-size。也是把网页宽度平分10份。
+
+      https://github.com/amfe/lib-flexible
+
+     -->
+    <script src="./js/flexible.js"></script>
+  </body>
+</html>
