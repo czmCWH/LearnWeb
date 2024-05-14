@@ -28,3 +28,15 @@ $ npm run dev
 ## 如果项目实在跑不起来
 
 需要把工程文件夹名字改为英文
+
+
+## excel 导出库
+
+```
+"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+
+// 或
+
+"exceljs": "^4.4.0",
+"file-saver": "^2.0.5",
+```

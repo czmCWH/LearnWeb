@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-暂停播放动画</title>
+  <style>
+    .box {
+     width: 200px;
+     height: 200px;
+     border: 1px solid #000;
+
+     animation-name: move;
+     animation-duration: 3s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+
+     /* animation 复合写法 
+        如果中间有些属性不需要，隔开跳过即可。
+     */
+     /* animation: move 2s linear 1s infinite alternate; */
+   }
+   .box:hover {
+    /* 设置动画暂停，通常配置 hover 一起使用，鼠标移动到盒子上暂停动画 */
+    animation-play-state: paused;
+   }
+   @keyframes move {
+     0% {
+       transform: translateX(0px);
+       background-color: green;
+     }
+     100% {
+       transform: translateX(800px);
+       background-color: blue;
+     }
+   }
+ </style>
+</head>
+<body>
+ <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-动画语法</title>
+  <style>
+    /* 1、补帧动画 */
+    @keyframes ani {
+      from {
+        background-color: red;
+      }
+      to {
+        background-color: blue;
+      }
+    }
+    .box1 {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      animation: ani 3s;
+    }
+
+    /* 2、多状态动画 */
+    @keyframes ani-img {
+      0% {
+        transform: scale(1);
+      }
+      30% {
+        transform: scale(2);
+      }
+      60% {
+        transform: scale(0.7);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .box2 {
+      width: 690px;
+      height: 454px;
+      background: url(./imgs/hero.jpeg);
+      margin: 20px auto;
+      animation: ani-img 3s;
+    }
+
+  </style>
+</head>
+<!-- 
+
+  过渡：实现2个状态间的变化过程；
+  动画：实现多个状态间的变化过程，动画过程可控(重复播放、最终画面、是否暂停)
+
+  1、定义动画
+  
+  // 补帧动画
+  @keyframes 动画名称 {
+    from {}   // 开始状态
+    to {}     // 结束状态
+  }
+
+  // 多状态动画
+  @keyframes 动画名称 {
+    0% {}
+    10% {}
+    //...
+    100% {}
+  }
+
+  2、使用动画
+  animation: 动画名称 动画花费时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态;
+ -->
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-动画播放次数</title>
+  <style>
+     .box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+
+      animation-name: move;
+      animation-duration: 3s;
+      /* 设置动画执行次数
+        infinite：动画无限次数播放
+       */
+      animation-iteration-count: infinite;
+    }
+    @keyframes move {
+      0% {
+        transform: translateX(0px);
+        background-color: green;
+      }
+      100% {
+        transform: translateX(800px);
+        background-color: blue;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>

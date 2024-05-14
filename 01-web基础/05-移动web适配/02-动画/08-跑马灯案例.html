@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-跑马灯案例</title>
+  <style>
+    .box {
+      /* 480x3 = 1440 */
+      width: 1440px;
+      height: 270px;
+      border: 10px solid #000;
+      margin: 100px auto;
+      overflow: hidden;
+    }
+
+    .main {
+      width: 4800px;
+      height: 270px;
+      display: flex;
+      /* transform: translateX(-480px); */
+      animation: move 10s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* 移动7张图片 */
+        transform: translateX(-3360px);
+        /* 移动4张图片 */
+        /* transform: translateX(-1920px); */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="main">
+      <!-- 480x7 = 3360 -->
+      <img src="./imgs/1.jpg" alt="">
+      <img src="./imgs/2.jpg" alt="">
+      <img src="./imgs/3.jpg" alt="">
+      <img src="./imgs/4.jpg" alt="">
+      <img src="./imgs/5.jpg" alt="">
+      <img src="./imgs/6.jpg" alt="">
+      <img src="./imgs/7.jpg" alt="">
+      <!-- 假的123，解决每次动画结束时效果衔接，避免出现卡一下的问题 -->
+      <!-- 480x10 = 4800 -->
+      <img src="./imgs/1.jpg" alt="">
+      <img src="./imgs/2.jpg" alt="">
+      <img src="./imgs/3.jpg" alt="">
+    </div>
+  </div>
+</body>
+</html>

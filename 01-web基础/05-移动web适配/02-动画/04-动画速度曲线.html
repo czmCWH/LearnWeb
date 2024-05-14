@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-动画速度曲线</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+
+      animation-name: move;
+      animation-duration: 3s;
+    }
+    .box:nth-child(2) {
+      
+      /* 设置动画速度曲线
+        linear：动画匀速执行；
+       */
+      animation-timing-function: linear;
+    }
+    .box:nth-child(3) {
+      
+      /* 设置动画速度曲线
+        steps(8)：逐帧动画，而不是补帧。
+       */
+      animation-timing-function: steps(8);
+    }
+    @keyframes move {
+      0% {
+        transform: translateX(0px);
+        background-color: green;
+      }
+      100% {
+        transform: translateX(800px);
+        background-color: blue;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  
+</body>
+</html>

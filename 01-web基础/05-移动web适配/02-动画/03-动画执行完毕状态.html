@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-动画执行完毕状态</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+
+      animation-name: move;
+      animation-duration: 3s;
+      animation-delay: 1s;
+      /* 
+        动画状态控制。
+        forwards：动画结束后，停在最后一帧； 
+        backwards：动画等待执行的时候，状态固定在第一帧。
+      */
+      animation-fill-mode: backwards;
+    }
+    @keyframes move {
+      0% {
+        transform: translateX(250px);
+        background-color: green;
+      }
+      100% {
+        transform: translateX(500px);
+        background-color: blue;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-逐帧动画+精灵图+多组动画</title>
+  <style>
+    .box {
+      width: 140px;
+      height: 140px;
+      /* bg.png 的宽度为 1680px，有12个格子，每个格子140px */
+      background: url(./imgs/bg.png) no-repeat;
+
+      /* 思考：怎么往左走？控制背景图位置 */
+      /* background-position: -100px 0; */
+      animation: run 0.4s steps(12) infinite,
+                 box 5s forwards;
+
+      /* 同一个盒子：可以做多组动画。其效果是多个动画是叠加控制 */
+      /* animation: 动画1控制,动画2控制,...; */
+    }
+
+    /* 原地跑 */
+    @keyframes run {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -1680px 0;
+      }
+    }
+    /* 移动往前跑 */
+    @keyframes box {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(800px);
+      }
+    }
+  </style>
+</head>
+<!-- 
+  精灵图 表示每一帧的效果，然后逐帧动画展示精灵图。
+
+ -->
+<body>
+  <div class="box"></div>
+</body>
+</html>
