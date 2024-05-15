@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-移动web适配方案</title>
+  <style>
+    .box1 {
+      width: 20vw;
+      height: 20vw;
+      background-color: orange;
+    }
+    .box2 {
+      width: 20vh;
+      height: 20vh;
+      background-color: orange;
+    }
+    /* 
+      开发中，能不能vw和vh混用呢?
+      不能，vh是1/100视口高度，全面屏视口高度尺寸大，如果混用可能会导致盒子变形。
+      如下方式不正确。
+    */
+    .box3 {
+      width: 20vw;
+      height: 20vh;
+      background-color: orange;
+    }
+  </style>
+</head>
+<!-- 
+
+  1、vw 和 vh 表示相对单位，指相对视口的尺寸计算结果
+    1、vw：viewportwidth，表示相对于视口宽度的单位
+      1vw = 1/100视口宽度，比如：对于iphone 6，1vw = 3.75
+
+    2、vh：viewportheight，表示相对于视口高度的单位
+      1vh = 1/100视口高度，比如：对于iphone 6，1vw = 6.67
+
+  2、vw布局
+    2.1、确定设计稿对应的vw尺寸 (1/100视口宽度)
+        查看设计稿宽度 → 确定参考设备宽度 (视口宽度) → 确定 vw 尺寸 (1/100 视口宽度)
+    2.2、vw单位的尺寸 = px 单位数值 / ( 1/100 视口宽度 )
+  
+  3、vh 布局
+    3.1、确定设计稿对应的vh尺寸 (1/ 100视口高度)
+          查看设计稿宽度 → 确定参考设备高度 (视口高度) → 确定 vh 尺寸 (1/100 视口高度)
+    3.2、 vh单位的尺寸 = px 单位数值 / ( 1/100 视口高度 )
+
+  4、由于通过 vw 布局时，需要进行计算，所以需要使用 less 插件。
+ -->
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <div class="box3"></div>
+</body>
+</html>
