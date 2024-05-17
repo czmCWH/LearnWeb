@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-bootstrap栅格系统</title>
+  <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" >
+  <style>
+    .box {
+      background-color: pink;
+      height: 100px;
+      margin-bottom: 20px;
+      /* min-width: 100px;
+      max-width: 200px; */
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<!-- 
+  1、bootstrap栅格系统(Grid system)
+  https://v5.bootcss.com/docs/layout/grid/
+
+  * 重点：学会使用类名，根据 bootstrap 说明文档来学习。
+
+  栅格化是指将整个网页的宽度分成12等份，每个盒子占用的对应的份数
+  
+ -->
+<body>
+  <!-- 添加 container 版心，可以让容器居中 -->
+  <!-- <div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 box">盒子1占父盒子12份中的6份</div>
+      <div class="col-md-5 box">盒子1占父盒子12份中的5份</div>
+    </div>
+    <!-- row 行： -->
+    <div class="row item">
+
+      <!-- 
+        col-xs-6  宽度<576px时，div占总数12份中的6份
+        col-sm-6  宽度≥576px时，div占总数12份中的6份 
+        col-md-4  宽度≥768px时，div占总数12份中的4份
+        col-lg-3  宽度≥992px时，div占总数12份中的3份
+        col-xl-2  宽度≥1200px时，div占总数12份中的2份
+        col-xxl-2 宽度≥1400px时，div占总数12份中的2份
+       -->
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">1</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">2</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">3</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">4</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">5</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">6</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">7</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">8</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">9</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">10</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">11</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">12</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">13</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">14</div></div>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2"><div class="box">15</div></div>
+    </div>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<link>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-响应式布局(媒体查询)</title>
+  <!-- <link rel="stylesheet" media="( max-width: 768px )" href="./red.css">
+  <link rel="stylesheet" media="( min-width: 992px )" href="./green.css"> -->
+  <style>
+    body {
+      background-color: #ccc;
+    }
+    /* 
+      注意！！！！！！：使用媒体查询布局时，需要按照顺序进行书写，否则会因为css权重问题而达不到效果。
+      即：要么从小到大；要么从大到小。
+     */
+    @media( min-width: 768px) {  
+      body {
+        background-color: pink;
+      }
+    }
+    @media( min-width: 992px) {  
+      body {
+        background-color: green;
+      }
+    }
+    @media( min-width: 1200px) {  
+      body {
+        background-color: yellow;
+      }
+    }
+  </style>
+</head>
+<!-- 
+  1、响应式网页解决方案
+  
+  方案1:  媒体查询
+    @media(媒体特性) {  
+      CSS选择器 {
+        样式
+      }
+    }
+  通常使用 max-width、min-width 来约定范围进行布局。
+  * min-width：从小到大
+  * max-width：从大到小
+
+  方案2: Bootstrap
+
+
+  2、媒体查询完整语法
+  完整语法：@media 关键词 媒体类型 and (媒体特性) {
+    css代码
+  }
+
+  2.1、关键词/逻辑操作符：and、only、not
+  2.2、媒体类型是用来区分设备类型的，如屏幕设备、打印设备等，其中机、电脑、平板都属于屏幕设备。对应关系如下：
+    屏幕设备 screen：表示带屏幕的设备；
+    打印设备 print：表示可以打印预览模式
+    阅读器 speech：表示屏幕阅读模式
+    不区分类型 all：默认值，包含以上3种情形。
+  2.3、媒体特性
+    媒体特性主要用来描述媒体类型的具体特征，如当前屏幕的宽高、分辨率、横屏或竖屏等。
+    视口的宽和高    width、height
+    视口的最大宽和高    max-width、max-height
+    视口最小宽和高      min-width、min-height
+    屏幕方向        orientation     portrait 竖屏；landscape 横屏。
+
+
+
+  3、媒体查询外部写法：引用外部媒体查询
+  <link rel="stylesheet" media="( max-width: 768px )" href="./red.css">
+  <link rel="stylesheet" media="( min-width: 992px )" href="./green.css">
+
+ -->
+<body>
+  
+</body>
+</html>

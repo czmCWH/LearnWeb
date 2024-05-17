@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-响应式布局(bootstrap)</title>
+  <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" >
+  <style>
+    .container {
+      background-color: orange;
+    }
+  </style>
+</head>
+<!-- 
+  1、bootstrap 响应式布局框架
+
+  Bootstrap 是由 Twitter 公司开发维护的前端UI框架，它提供了大量编写好的CSS样式，允许开发者结合一定HTML结构及JavaScript，快速编写功能完善的网页及常见交互效果。
+
+  Bootstrap 解决了自己写 媒体查询覆盖不广泛的问题。
+
+  注意！！！！！！重点：掌握 bootstrap 中的类名
+
+  bootstrap中文网：https://www.bootcss.com/，下载:Bootstrap V5中文文档 → 进入中文文档 → 下载 →下载 Bootstrap 生产文件
+
+  2、boostrap框架中常用的类文件：
+    
+    bootstrap.min.css   封装的css样式，当使用 bootstrap 提供的类选择器时，必须导入该文件。
+    bootstrap.min.js    封装的js，当使用 bootstrap 封装的组件时，需要响应事件，需导入。
+
+  3、bootstrap的重点类选择器 container
+  container：表示响应式布局版心类。默认的 .container 类是一个响应式、固定宽度的容器，这意味着它的最大宽度在每个断点处都会发生变化。
+  https://v5.bootcss.com/docs/layout/containers/
+
+ -->
+<body>
+  <!-- 
+    1、
+
+   -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">1</div>
+      <div class="col-md-3 col-sm-6">2</div>
+      <div class="col-md-3 col-sm-6">3</div>
+      <div class="col-md-3 col-sm-6">4</div>
+    </div>
+  </div>
+</body>
+</html>
