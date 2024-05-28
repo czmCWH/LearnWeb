@@ -4,4 +4,8 @@
 
 **Live demo:** http://panjiachen.github.io/vue-admin-template
 
+# vue-pure-admin
 
+全面 `ESM+Vue3+Vite+Element-Plus+TypeScript` 编写的一款后台管理系统（兼容移动端）
+
+[pure-admin/vue-pure-admin]<https://github.com/pure-admin/vue-pure-admin>
