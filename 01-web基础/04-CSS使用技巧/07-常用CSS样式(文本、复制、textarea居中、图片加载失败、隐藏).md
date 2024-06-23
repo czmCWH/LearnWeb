@@ -5,9 +5,9 @@
 ```css
 /* 单行文本溢出省略号 */
 .line {
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* 多行文本溢出省略号 */
