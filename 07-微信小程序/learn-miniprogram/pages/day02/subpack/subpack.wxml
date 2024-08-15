@@ -1,0 +1,7 @@
+<!--pages/day02/subpack/subpack.wxml-->
+<!-- 
+  分包页面路由跳转时需注意：
+    主包 跳转到 分包时，路径需从 分包根目录开始；
+    分包A 跳转到 分包B，路径需从 分包根目录开始；
+ -->
+<navigator url="/pkg_product/pages/product/product" open-type="navigate" hover-class="none" style="text-align: center;">跳转分包：pkg_product </navigator>

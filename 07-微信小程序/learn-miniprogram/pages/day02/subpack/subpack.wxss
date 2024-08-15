@@ -1,0 +1,5 @@
+/* pages/day02/subpack/subpack.wxss */
+navigator {
+  color: blue;
+  margin-top: 20rpx;
+}

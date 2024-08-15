@@ -1,0 +1,45 @@
+<!--pages/day03/data/data.wxml-->
+<view>--------1、数据绑定、条件渲染----------</view>
+<view>
+  <!-- 此处是字符串的 "false"，最终导致 Boolean("false") 布尔结果为 true -->
+  <switch checked="false" />
+  <!-- 此处是赋值 false 值 -->
+  <switch checked="{{ false }}" />
+</view>
+<view>
+  <input type="text" placeholder="请输入内容" model:value="{{ msg }}" style="background-color: pink; height: 80rpx; margin: 30rpx 20rpx;"/>
+</view>
+
+<view>
+  <switch model:checked="{{ isLogin }}" />
+  <text wx:if="{{ isLogin }}">登录用户</text>
+  <text wx:else>游客</text>
+</view>
+
+<view>
+  <text hidden>加载中...</text>
+  <text hidden="{{ !isRefresh }}">加载中...</text>
+  <switch model:checked="{{ isRefresh }}" />
+</view>
+<view>--------2、列表渲染----------</view>
+<view wx:for="{{ students }}" wx:key="id"  class="item">
+  <!-- 
+    index 循环下标 
+    item 循环项
+  -->
+  <text>{{ index }}</text>
+  <text>{{ item.name }}</text>
+  <text>{{ item.age }}</text>
+  <text>{{ item.level }}</text>
+</view>
+<!-- 循环简单数组，使用 wx:key="*this" -->
+<view>
+  <text wx:for="{{ fruits }}" wx:key="*this" class="item">{{ item }}</text>
+</view>
+<!-- 循环嵌套时改名 -->
+<view wx:for="{{ students }}" wx:key="id" wx:for-item="stu" wx:for-index="idx" class="item">
+  <text>{{ idx }}</text>
+  <text>{{ stu.name }}</text>
+  <text>{{ stu.age }}</text>
+  <text>{{ stu.level }}</text>
+</view>

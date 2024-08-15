@@ -1,0 +1,5 @@
+/* components/my-style.wxss */
+.my-text {
+  font-size: 28rpx;
+  color: white;
+}

@@ -1,0 +1,2 @@
+<!--components/my-search/my-search.wxml-->
+<text style="color: purple; font-size: 40rpx;">自定义组件：my-search</text>

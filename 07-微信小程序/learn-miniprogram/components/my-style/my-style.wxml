@@ -1,0 +1,7 @@
+<!--components/my-style.wxml-->
+<view class="my-text" style="text-align: center;">
+  <text>本段文字样式可被 page.wxss 中修改</text>
+</view>
+<view style="text-align: center;">
+  <text class="my-cls">本段文字样式由组件的 my-cls 属性接受外部类选择器决定</text>
+</view>

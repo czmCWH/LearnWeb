@@ -1,0 +1,9 @@
+<!--components/my-nav/my-nav.wxml-->
+<view class="navigation-bar navigation-bar-title" style="padding-top: {{ statusBarHeight }}px;">
+  <div class="left" wx:if="{{ back }}" bind:tap="navBack">返回</div>
+  <view>
+    <slot name="before"/>
+    <text class="color-pink custom-class">自定义导航栏</text>
+    <slot name="after" bind:tap="onTapRight" />
+  </view>
+</view>

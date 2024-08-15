@@ -1,0 +1,41 @@
+<view class="navs">
+  <text class="active">精选</text>
+  <text>手机</text>
+  <text>食品</text>
+  <text>内衣</text>
+  <text>生鲜</text>
+  <text>母婴</text>
+</view>
+
+<!-- 1、页面数据绑定 -->
+<view>{{ msg }}</view>
+<!-- 2、bind:事件名称=事件处理函数；tap 表示点击事件 -->
+<button type="primary" bind:tap="changeMsg">点击修改</button>
+
+<!-- 
+  3、navigator 组件页面跳转
+    url 属性：
+      url="../logs/logs"，相对路径；
+      url="/pages/logs/logs"，绝对路径，常用 ；
+
+    open-type 属性：
+      open-type="navigate"，push跳转
+      open-type="navigateBack"，返回
+      open-type="switchTab"，跳转到 app.json 文件中配置的 tabBar。
+    
+    hover-class 属性：指定点击时的样式类
+      hover-class="none"
+  -->
+<navigator url="../logs/logs" open-type="switchTab">跳转到 logs 页面</navigator>
+<navigator url="/pages/logs/logs" open-type="switchTab">跳转到 logs 页面</navigator>
+<navigator url="/pages/demo01/demo01" open-type="navigate" hover-class="none">跳转到 demo01 页面</navigator>
+
+<van-button type="default">默认按钮</van-button>
+<van-button type="primary">主要按钮</van-button>
+<van-button type="info">信息按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+
+<van-button plain type="primary">朴素按钮</van-button>
+<van-button plain type="info">朴素按钮</van-button>
+<button bind:tap="setAppData">设置全局 globalData</button>

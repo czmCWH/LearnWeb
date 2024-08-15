@@ -1,0 +1,24 @@
+/* components/my-nav/my-nav.wxss */
+/* 
+  注意：
+      不要在组件内使用 标签选择器、id选择器、属性选择器，会影响全局，它不受样式隔离的影响；
+      尽量使用 类选择器
+*/
+.navigation-bar {
+  background-color: #fff;
+  height: 88rpx;
+  /* 顶部刘海 */
+  padding-top: 100rpx;
+  display: flex;
+  justify-content: center;
+}
+.navigation-bar-title {
+  font-weight: bold;
+}
+.color-pink {
+  color: purple;
+}
+.left {
+  position: absolute;
+  left: 20rpx;
+}

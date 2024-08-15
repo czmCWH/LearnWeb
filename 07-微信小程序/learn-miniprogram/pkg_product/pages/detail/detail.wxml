@@ -1,0 +1,4 @@
+<!--pkg_product/pages/detail/detail.wxml-->
+<view style="text-align: center;">
+  <text>分包：pkg_product，detail 页面</text>
+</view>

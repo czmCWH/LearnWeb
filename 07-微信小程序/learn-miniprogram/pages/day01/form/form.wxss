@@ -1,0 +1,30 @@
+/* pages/day01/form/form.wxss */
+page {
+  padding: 40rpx 0;
+  box-sizing: border-box;
+  background-color: #f7f8fa;
+}
+.legend {
+  padding-left: 40rpx;
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 500;
+}
+.form-field {
+  display: flex;
+  margin-top: 20rpx;
+  padding: 0 40rpx;
+  height: 88rpx;
+  background-color: #fff;
+  line-height: 88rpx;
+  color: #333;
+}
+.form-field label {
+  width: 120rpx;
+}
+.form-field .field {
+  flex: 1;
+}
+.form-field input {
+  height: 100%;
+}

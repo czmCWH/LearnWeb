@@ -1,0 +1,38 @@
+<!--pages/day01/some/some.wxml-->
+<!-- 
+1、image 缩放模式：
+  scaleToFill 不保证缩放比，图片拉伸填满容器
+  aspectFit 保证缩放比，使图片的长边显示出来，
+  aspectFill 保证缩放比，使图片的短边显示出来，长边裁剪
+
+2、WXSS 样式文件中不支持本地资源
+    WXSS 中只能使用 网络图片、base64代码
+
+3、自定义图标
+  https://www.iconfont.cn/
+ -->
+<view style="text-align: center;">
+  <text>1、image 图片缩放模式，通常使用 aspectFill</text>
+  <image class="img" src="/static/uploads/goods_1.jpg" mode="aspectFill"></image>
+</view>
+
+<!-- 
+  2、swiper 轮播图组件 
+    indicator-dots，圆点指示器
+    autoplay，自动轮播
+    circular，衔接滑动，无缝轮播
+  -->
+<view style="margin-top: 40rpx; text-align: center;">
+  <text>2、swiper 轮播图组件 </text>
+  <swiper class="banner" indicator-dots autoplay circular>
+  <swiper-item>
+    <image src="/static/uploads/slide_1.jpg" mode="aspectFill"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/static/uploads/slide_2.jpg" mode="aspectFill"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/static/uploads/slide_3.jpg" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+</view>

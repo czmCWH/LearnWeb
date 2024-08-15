@@ -1,0 +1,5 @@
+/* pkg_product/pages/product/product.wxss */
+navigator {
+  color: blue;
+  margin-top: 20rpx;
+}

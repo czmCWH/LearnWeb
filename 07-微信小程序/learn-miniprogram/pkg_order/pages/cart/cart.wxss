@@ -1,0 +1,5 @@
+/* pkg_order/pages/cart/cart.wxss */
+navigator {
+  color: blue;
+  margin-top: 20rpx;
+}

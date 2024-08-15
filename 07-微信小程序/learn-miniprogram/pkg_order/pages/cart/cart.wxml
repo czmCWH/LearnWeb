@@ -1,0 +1,4 @@
+<!--pkg_order/pages/cart/cart.wxml-->
+<view style="text-align: center;">
+  <text>分包：pkg_order，cart 页面</text>
+</view>

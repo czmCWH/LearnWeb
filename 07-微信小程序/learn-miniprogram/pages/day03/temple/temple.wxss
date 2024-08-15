@@ -1,0 +1,7 @@
+/* pages/day03/data/data.wxss */
+
+.item {
+  display: flex;
+  justify-content: space-evenly;
+  
+}

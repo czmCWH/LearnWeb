@@ -1,0 +1,23 @@
+/* pages/day02/usingComponent/usingComponent.wxss */
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+/* 修改 my-style 组件的内部样式 */
+.my-text {
+  padding: 20rpx 0;
+  background-color: pink;
+}
+
+/* 为 my-style 组件传入外部样式 */
+.my-cls-1 {
+  font-size: 36rpx;
+  color: pink;
+}
+.my-cls-2 {
+  font-weight: 700;
+  background-color: brown;
+}

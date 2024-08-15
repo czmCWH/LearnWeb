@@ -1,0 +1,2 @@
+<!--pages/day03/life/life.wxml-->
+<text>组件生命周期，定时器销毁</text>

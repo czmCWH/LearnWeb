@@ -1,0 +1,20 @@
+<!--pages/day02/usingComponent/usingComponent.wxml-->
+<!-- 3、组件插槽、组件通信 -->
+<my-nav custom-class="color-black" back="{{ true }}" bind:getBarHeight='getBarHeightFn'>
+    <text slot="before">插槽1</text>
+    <text slot="after">子传父</text>
+</my-nav>
+<!-- 1、使用组件 -->
+<view class="item">
+  <text>使用局部注册的组件</text>
+  <local-search />
+</view>
+<view class="item">
+  <text>使用全局注册的组件</text>
+  <global-search />
+</view>
+
+<!-- 2、设置组件样式 -->
+<view>
+  <my-style my-cls="my-cls-1 my-cls-2"></my-style>
+</view>

@@ -1,0 +1,42 @@
+<!--pages/day01/form/form.wxml-->
+<view class="register">
+  <view class="legend">信息登记:</view>
+  <view class="form-field">
+    <label for="">姓名:</label>
+    <view class="field">
+      <input value="" maxlength="4" type="text" placeholder="请输入姓名" />
+    </view>
+  </view>
+  <view class="form-field">
+    <label for="">性别:</label>
+    <view class="field">
+      <radio-group bindchange="sexChange">
+        <radio value="1" checked>男</radio>
+        <radio value="0">女</radio>
+      </radio-group>
+    </view>
+  </view>
+  <view class="form-field">
+    <label for="">爱好:</label>
+    <view class="field">
+      <checkbox-group bindchange="hobbyChange">
+        <checkbox value="1" checked>吃饭</checkbox>
+        <checkbox value="2">睡觉</checkbox>
+        <checkbox value="3">唱歌</checkbox>
+        <checkbox value="4">跑步</checkbox>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="form-field">
+    <label for="">籍贯:</label>
+    <!-- <view class="field"> -->
+      <picker mode="region" bindchange="regionChange">{{ regionText || '请选择省市区' }}</picker>
+    <!-- </view> -->
+  </view>
+  <view class="form-field">
+    <label for="">生日:</label>
+    <!-- <view class="field"> -->
+      <picker mode="date" bindchange="dateChange" start="1900-01-01" end="{{ endDate }}">{{ dateText || '请选择生日' }}</picker>
+    <!-- </view> -->
+  </view>
+</view>

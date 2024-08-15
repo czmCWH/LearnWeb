@@ -1,0 +1,9 @@
+<!--pkg_product/pages/product/product.wxml-->
+<view style="text-align: center;">
+  <text>分包：pkg_product，product 页面</text>
+  
+  <navigator url="../detail/detail" open-type="navigate" hover-class="none">跳转到当前分包的 detail 页面</navigator>
+
+  <navigator url="/pkg_order/pages/cart/cart" open-type="navigate" hover-class="none">跳转到其它分包 pkg_order</navigator>
+</view>
+

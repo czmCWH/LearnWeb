@@ -1,0 +1,94 @@
+<!--pages/day03/events/events.wxml-->
+<!-- 搜索框 -->
+<view class="search-bar">
+  <input type="text" placeholder="输入搜索关键字" />
+</view>
+<!-- 页面主体 -->
+<view class="page-body">
+  <scroll-view scroll-y class="aside">
+    <!-- 
+      1、wx:for 快捷方式循环 
+      2、事件传参
+          1. 使用 mark: 方式传递事件数据；
+          2. 使用 data-[属性名] 方式传递事件数据；
+      3、css绑定
+    -->
+    <view 
+      wx:for="{{ 6 }}"  
+      wx:key="*this" 
+      class="item {{ activeIndex === index ? 'active' : '' }}"
+      bind:tap="onChangeTab"
+      mark:index="{{ index }}"   
+      data-index="{{ index }}"    
+    >
+      {{ index }}
+      </view>
+  </scroll-view>
+  <!-- 
+    1、scroll-view  组件
+      scrolltolower 滚动触底；
+      refresherrefresh 下拉刷新
+      efresher-triggered 下拉状态
+   -->
+  <scroll-view 
+    class="content"
+    
+    scroll-y 
+    lower-threshold="0"
+    bind:scrolltolower="onScrolltolower"
+
+    refresher-enabled
+    bind:refresherrefresh="onRefresherrefresh"
+    refresher-triggered="{{ triggered }}"
+  >
+    <view wx:for="{{ 6 }}" wx:key="*this" class="item"></view>
+  </scroll-view>
+</view>
+
+<!-- 
+  form 表单
+  1、通过给 name 属性收集表单数据，此方式无法绑定数据
+
+
+ -->
+<view class="register">
+  <form bind:submit="onSubmit">
+    <view class="form-field">
+      <label for="">姓名:</label>
+      <view class="field">
+        <input name="username" type="text" placeholder="请输入您的姓名"/>
+      </view>
+    </view>
+    <view class="form-field">
+      <label for="">性别:</label>
+      <view class="field">
+        <radio-group  name="gender">
+          <radio value="男" checked />男
+          <radio value="女" />女
+        </radio-group>
+      </view>
+    </view>
+    <view class="form-field">
+      <label for="">爱好:</label>
+      <view class="field">
+        <checkbox-group name="hoby">
+          <checkbox value="写代码" checked />写代码
+          <checkbox value="睡大觉" />睡大觉
+        </checkbox-group>
+      </view>
+    </view>
+    
+    <view class="form-field">
+      <label for="">籍贯:</label>
+      <view class="field">
+        <picker mode="region" name="city">请选择籍贯</picker>
+      </view>
+    </view>
+    <!-- 
+      注意：submit 表单提交时触发，button 按钮必须指定 form-type 属性
+     -->
+     <view>
+      <button form-type="submit" size="mini" type="primary">保存</button>
+     </view>
+  </form>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/day01/base/base.wxml-->
+<view class="navs">
+  <text class="active">精选</text>
+  <text>手机</text>
+  <text>食品</text>
+  <text>内衣</text>
+  <text>生鲜</text>
+  <text>母婴</text>
+</view>
+
+<view style="margin-top: 40rpx; text-align: center;">
+  <text>2、绑定数据和事件</text>
+  <!-- 1、页面数据绑定，渲染层 WXML 中 属性 or 内容 都使用  {{ }} 对 js 中的数据进行绑定 -->
+  <view>{{ msg }}</view>
+  <!-- 2、bind:事件名称=事件处理函数；tap 表示点击事件 -->
+  <button size="mini" type="primary" bind:tap="changeMsg">点击修改</button>
+</view>
+
+
+<view style="margin-top: 40rpx; text-align: center;">
+  <text>3、路由跳转</text>
+  <!-- 
+    navigator 组件页面跳转
+      url 属性：
+        url="../logs/logs"，相对路径；
+        url="/pages/logs/logs"，绝对路径，推荐使用！！！！！！ ；
+
+      open-type 属性：
+        open-type="navigate"，跳转
+        open-type="navigateBack"，返回
+        open-type="switchTab"，跳转到 app.json 文件中配置的 tabBar。
+      
+      hover-class 属性：指定点击时的样式类
+        hover-class="none"
+   -->
+  <navigator url="../../logs/logs" open-type="navigate">跳转到 logs 页面</navigator>
+  <navigator url="/pages/day01/some/some" open-type="switchTab" hover-class="none">切换tabar</navigator>
+</view>
+
+<view style="margin-top: 40rpx; text-align: center;">
+  <text> 4、rpx 屏幕适配</text>
+  <view style="width: 375px; height: 100px; background-color: pink;">px盒子</view>
+  <view style="width: 750rpx; height: 100rpx; background-color: rgb(192, 255, 206);">rpx盒子</view>
+</view>
