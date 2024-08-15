@@ -1,0 +1,6 @@
+<!--components/auth/auth.wxml-->
+<!-- 
+  鉴权组件：
+    根据 isLogin 属性判断是否渲染插槽里面的内容。
+-->
+<slot wx:if="{{ isLogin }}"></slot>
