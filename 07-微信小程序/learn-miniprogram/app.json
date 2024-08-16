@@ -15,8 +15,7 @@
     "pages/day03/handle/events",
     "pages/day03/life/life",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/demo01/demo01"
+    "pages/logs/logs"
   ],
   "entryPagePath": "pages/day01/base/base",
   "subPackages": [

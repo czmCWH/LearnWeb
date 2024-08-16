@@ -1,5 +1,0 @@
-<!--pages/demo01/demo01.wxml-->
-<view style="background-color: pink; width: 375px; height: 100px;">px盒子</view>
-<view style="background-color: rgb(192, 255, 206); width: 750rpx; height: 100rpx;">rpx盒子</view>
-<navigator open-type="navigateBack">返回</navigator>
-<button bind:tap="getPage">获取当前Page</button>
