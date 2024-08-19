@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { Cell as VanCell } from 'vant';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { Cell as VanCell } from 'vant'
 import type { ArticleItem, ArticleResData } from './data.d.ts'
 
 // 定义组件 props 类型
@@ -30,7 +30,6 @@ const getList = async () => {
 onMounted(() => {
   getList()
 })
-
 </script>
 
 <template>
@@ -46,14 +45,14 @@ onMounted(() => {
         </div>
 
         <!-- 单图模式 -->
-        <div class="title-box"  v-if="item.cover.type === 1">
+        <div class="title-box" v-if="item.cover.type === 1">
           <span>{{ item.title }}</span>
           <img class="thumb" :src="item.cover.images[0]" />
         </div>
 
         <!-- 三图模式 -->
-        <div class="thumb-box"  v-if="item.cover.type === 3">
-          <img class="thumb" v-for="img in item.cover.images" :key="img" :url="img"/>
+        <div class="thumb-box" v-if="item.cover.type === 3">
+          <img class="thumb" v-for="img in item.cover.images" :key="img" :url="img" />
         </div>
       </template>
       <!-- label 区域的插槽 -->
@@ -67,10 +66,8 @@ onMounted(() => {
         </div>
       </template>
     </van-cell>
-
   </div>
 </template>
-
 
 <style scoped>
 .list-box {

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { Tabs as VanTabs, Tab as VanTab } from 'vant';
+import { ref, onMounted } from 'vue'
+import { Tabs as VanTabs, Tab as VanTab } from 'vant'
 
-import axios from 'axios';
+import axios from 'axios'
 import List from './ListItem.vue'
 import type { ChannelItem, ChannelRes } from './data.d.ts'
 
@@ -27,13 +27,12 @@ onMounted(() => {
 })
 
 // 4、响应式列表渲染到模版（类型提示）
-// 频道id 
+// 频道id
 const channelId = ref(0)
 
 const tabChange = (id: number) => {
   channelId.value = id
 }
-
 </script>
 
 <template>
@@ -44,10 +43,6 @@ const tabChange = (id: number) => {
       <List :channelId="channelId" />
     </van-tab>
   </van-tabs>
-
 </template>
 
-<style scoped>
-
-</style>
-
+<style scoped></style>
