@@ -12,6 +12,8 @@
   * 联合类型、类型别名、接口（interface）、字面量类型、泛型、枚举、void、any等
 
 */
+
+// ✊✊✊ 书写单独的ts文件时，需要加上 export {} 避免文件中的变量、类型、函数名和其它文件冲突
 export {}
 
 const name: String = '哈哈'
