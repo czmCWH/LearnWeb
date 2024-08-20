@@ -1,0 +1,21 @@
+:root {
+  // 定义CSS全局变量
+  --cp-primary: #16c2a3;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}

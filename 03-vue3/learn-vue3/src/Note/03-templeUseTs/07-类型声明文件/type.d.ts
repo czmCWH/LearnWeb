@@ -1,11 +1,11 @@
 type Goods = {
-  name: string,
+  name: string
   price: number
 }
 
 type Order = {
-  id: string,
+  id: string
   time: string
 }
 
-export { Goods, Order}
+export { Goods, Order }

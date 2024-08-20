@@ -4,7 +4,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 export const useChannelStore = defineStore('channel', () => {
-
   // 定义类型
   type ChannelItem = {
     id: number

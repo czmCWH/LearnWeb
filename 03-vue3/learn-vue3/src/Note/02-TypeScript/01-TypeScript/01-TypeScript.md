@@ -3,6 +3,8 @@
 TypeScript 是 `具有类型语法` 的 JavaScript，是一门强类型的编程语言。
 TypeScript = JavaScript + Type(类型)
 
+> 强烈推荐 Visual Studio Code (VS Code)，因为它对 TypeScript 有着很好的内置支持。
+
 ```js
 // JavaScript是弱类型语言，变量可以赋不同类型的值
 let count = 100

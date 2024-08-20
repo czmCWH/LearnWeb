@@ -11,7 +11,6 @@ onMounted(() => {
   // 触发异步action
   channelStore.getList()
 })
-
 </script>
 
 <template>
@@ -24,6 +23,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

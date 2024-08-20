@@ -8,15 +8,12 @@ const handleMsg = (msg: string) => {
 const handleList = () => {
   console.log('---list')
 }
-
 </script>
 
 <template>
   <div>
-    <StyleButton color="red" btnType="success"  @get-msg="handleMsg" @get-list="handleList"/>
+    <StyleButton color="red" btnType="success" @get-msg="handleMsg" @get-list="handleList" />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
