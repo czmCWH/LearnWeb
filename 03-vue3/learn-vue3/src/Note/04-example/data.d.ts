@@ -3,7 +3,6 @@ type ResType<T> = {
   data: T
 }
 
-
 // 频道相关类型
 export type ChannelItem = {
   id: number
@@ -43,7 +42,7 @@ export type ArticleItem = {
 //   }
 //   message: string
 // }
-export type ArticleResData = ResType<{ 
-  pre_timestamp: string 
+export type ArticleResData = ResType<{
+  pre_timestamp: string
   results: ArticleItem[]
 }>

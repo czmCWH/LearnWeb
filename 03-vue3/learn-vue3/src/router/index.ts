@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'list',
-      component: () => import('../Note/day04-example/List.vue')
+      component: () => import('../Note/04-example/List.vue')
     },
     {
       path: '/login',
