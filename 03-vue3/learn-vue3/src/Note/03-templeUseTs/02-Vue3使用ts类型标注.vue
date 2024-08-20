@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {ref, reactive} from 'vue'
+import { ref, reactive } from 'vue'
 
 /**
  * 👉 1、为Ref标注类型
  * 为ref标注类型之后，既可以在给ref对象的value赋值时校验数据类型，同时在使用value的时候可以获得代码提示
- * 
+ *
  * 为Ref标注类型，本质上是给ref对象的value属性添加类型约束。
  */
 
@@ -18,8 +18,8 @@ let year = ref<string | number>('2028')
 year.value = 2022
 
 type Item = {
-  id: string,
-  name: string,
+  id: string
+  name: string
   price: number
 }
 const list = ref<Item[]>([])
@@ -28,7 +28,6 @@ list.value.push({
   name: '鞋子',
   price: 235.0
 })
-
 
 /**
  * 👉 2、为reactive标注类型
@@ -43,8 +42,8 @@ form.userName = '张三'
 
 // 2、如果根据默认对象推导不出相应的类型，推荐使用类型别名给变量显式注解 对应类型
 type User = {
-  userName: string,
-  password: string,
+  userName: string
+  password: string
   isAgree?: boolean
 }
 const p: User = reactive({
@@ -52,7 +51,6 @@ const p: User = reactive({
   password: '123'
 })
 p.isAgree = true
-
 </script>
 <template>
   <div>
@@ -62,7 +60,4 @@ p.isAgree = true
   </div>
 </template>
 
-
-<style scoped>
-
-</style>
+<style scoped></style>

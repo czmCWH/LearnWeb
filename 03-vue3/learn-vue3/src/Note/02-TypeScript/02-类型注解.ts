@@ -14,7 +14,6 @@
 */
 export {}
 
-
 const name: String = '哈哈'
 const age: Number = 18
 const isLoading: Boolean = false
@@ -28,15 +27,14 @@ const unValue: undefined = undefined
  */
 
 // 语法一（推荐）：
-const arr1: number[] = [1, 2, 3];
+const arr1: number[] = [1, 2, 3]
 // 语法二（泛型写法）：
-const arr2: Array<number>  = [1, 2, 3];
-
+const arr2: Array<number> = [1, 2, 3]
 
 function uniTsType() {
   /**
    * 1、联合类型：将多个类型合并为一个类型对变量进行注解
-   * 
+   *
    */
 
   // string | number 表示arr3中的成员既可以是string类型也可以是number类型
@@ -44,12 +42,11 @@ function uniTsType() {
 
   /**
    * 👉 3、类型别名，通过 type关键词 给写起来较复杂的类型起一个其它的名字，用来简化和复用类型
-   * 
+   *
    * type 类型别名 = 具体类型  其中类型别名的命名采用规范的大驼峰格式
    */
 
   type arrType = (string | number)[]
 
   const arr2: arrType = [1, 'a', 3, 2, 'b']
-
 }
