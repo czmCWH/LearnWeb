@@ -7,7 +7,7 @@ const activeIndex = ref(0)
 // 当 swiper 下标发生变化时触发
 // UniHelper 提供事件类型
 const onChange: UniHelper.SwiperOnChange = (ev) => {
-  console.log('---', ev.detail?.current)
+  // console.log('---', ev.detail?.current)
   activeIndex.value = ev.detail!.current
 }
 
