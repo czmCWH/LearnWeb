@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { getGoodsByIdAPI } from '@/services/goods'
 import type { GoodsResult } from '@/types/goods'
+import AddressPanel from './components/AddressPanel.vue'
+import ServicePanel from './components/ServicePanel.vue'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -26,18 +28,32 @@ onLoad(() => {
 
 // 轮播图改变
 const currentIndex = ref(0)
+// 通过 UniHelper 指定事件类型
 const onChange: UniHelper.SwiperOnChange = (ev) => {
   // console.log('--- 轮播页码 = ', ev.detail.current)
   currentIndex.value = ev.detail!.current
 }
 
-// 点击轮播图预览
+// 点击轮播图
 const onTapImage = (url: string) => {
+  // 大图预览
   uni.previewImage({
     current: url,
     urls: goods.value?.mainPictures || [],
   })
 }
+
+// 底部弹出层
+const popupRef = ref<{
+  open: (type?: UniHelper.UniPopupType) => void
+  close: () => void
+}>()
+const popupName = ref<'address' | 'service'>()
+const openPupup = (name: typeof popupName.value) => {
+  popupName.value = name
+  popupRef.value?.open()
+}
+
 
 </script>
 
@@ -79,11 +95,11 @@ const onTapImage = (url: string) => {
           <text class="label">选择</text>
           <text class="text ellipsis"> 请选择商品规格 </text>
         </view>
-        <view class="item arrow">
+        <view @tap="openPupup('address')" class="item arrow">
           <text class="label">送至</text>
           <text class="text ellipsis"> 请选择收获地址 </text>
         </view>
-        <view class="item arrow">
+        <view @tap="openPupup('service')" class="item arrow">
           <text class="label">服务</text>
           <text class="text ellipsis"> 无忧退 快速退款 免费包邮 </text>
         </view>
@@ -157,6 +173,15 @@ const onTapImage = (url: string) => {
       <view class="buynow"> 立即购买 </view>
     </view>
   </view>
+  <!-- 底部弹出层 -->
+  <uni-popup
+    ref="popupRef"
+    type="bottom"
+    background-color="#fff"
+  >
+    <AddressPanel v-if="popupName === 'address'" @close="popupRef?.close()"/>
+    <ServicePanel v-if="popupName === 'service'" @close="popupRef?.close()"/>
+  </uni-popup>
 </template>
 
 <style lang="scss" scoped>
