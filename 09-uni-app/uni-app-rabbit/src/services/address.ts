@@ -45,3 +45,14 @@ export const putMemberAddressAPI = (id: string, data: AddressParams) => {
     data
   })
 }
+
+/**
+ * 删除收获地址
+ * @param 请求参数
+ */
+export const deleteMemberAddressAPI = (id: string) => {
+  return http({
+    method: 'DELETE',
+    url: `/member/address/${id}`
+  })
+}
