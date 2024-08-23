@@ -45,7 +45,8 @@ const loginSuccess = (profile: LoginResult) => {
   })
   setTimeout(() => {
     // 等提示成功，再页面跳转
-    uni.switchTab({url:'/pages/my/my',})
+    // uni.switchTab({url:'/pages/my/my',})
+    uni.navigateBack()
   }, 500)
 }
 
