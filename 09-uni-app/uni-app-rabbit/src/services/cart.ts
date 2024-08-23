@@ -12,6 +12,18 @@ export const getMemberCartAPI = () => {
 }
 
 /**
+ * 删除/清空购物车单品
+ * @param data 请求体参数 ids SKUID 集合
+ */
+export const deleteMemberCartAPI = (data: { ids: string[] }) => {
+  return http({
+    method: 'DELETE',
+    url: '/member/cart',
+    data,
+  })
+}
+
+/**
  * 加入购物车
  */
 export const postMemberCartAPI = (data: {skuId: string, count: number}) => {
@@ -21,3 +33,4 @@ export const postMemberCartAPI = (data: {skuId: string, count: number}) => {
     data
   })
 }
+
