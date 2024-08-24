@@ -120,8 +120,10 @@ const addCart = (ev: SkuPopupEvent) => {
   uni.showToast({ title: '添加成功' })
   isShowSku.value = false
 }
-const buyNow = (ev: SkuPopupEvent) => {
 
+// sku组件 - 立即购买
+const buyNow = (ev: SkuPopupEvent) => {
+  uni.navigateTo({url: `/pagesOrder/create/create?skuId=${ev._id}&count=${ev.buy_num}`})
 }
 
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue'
-import { getMemberOrderPreAPI } from '@/services/order';
+import { getMemberOrderPreAPI, getMemberOrderPreNowAPI, postMemberOrderAPI, getMemberOrderAPI } from '@/services/order';
 import type { OrderPreResult } from '@/types/order';
 import { useAddressStore } from '@/stores/modules/address';
 
@@ -24,15 +24,27 @@ const onChangeDelivery: UniHelper.SelectorPickerOnChange = (ev) => {
   activeIndex.value = ev.detail.value
 }
 
-// 获取订单信息
-const orderPre = ref<OrderPreResult>()
-const getMemberOrderPreData = async () => {
-  const res = await getMemberOrderPreAPI()
-  orderPre.value = res.result
-}
+// 获取页面参数
+const query = defineProps<{
+  skuId?: string
+  count?: string
+}>()
 
-onLoad(() => {
-  getMemberOrderPreData()
+// 订单信息
+const orderPre = ref<OrderPreResult>()
+
+onLoad( async () => {
+  if (query.skuId && query.count) {
+    // 获取立即购买商品信息
+    const res = await getMemberOrderPreNowAPI({ skuId: query.skuId, count: query.count })
+    console.log('--- 获取立即购买商品信息 = ', res.result)
+    orderPre.value = res.result
+  } else {
+    const res = await getMemberOrderPreAPI()
+    console.log('--- 获取预付订单(购物车商品)信息 =', res.result)
+    orderPre.value = res.result
+  }
+
 })
 
 // 获取收货地址
@@ -40,6 +52,26 @@ const addressStore = useAddressStore()
 const selectAddress = computed(() => {
   return addressStore.selectedAddress || orderPre.value?.userAddresses.find(v => v.isDefault)
 })
+
+// 提交订单
+const onOrderSumbit = async () => {
+  if (!selectAddress.value?.id) {
+    return uni.showToast({ title: '请选择收货地址', icon: 'none' })
+  }
+
+  const res = await postMemberOrderAPI({
+    addressId: selectAddress.value!.id,
+    buyerMessage: buyerMessage.value,
+    deliveryTimeType: activeDelivery.value.type,
+    goods: orderPre.value!.goods.map((v) => ({ skuId: v.skuId, count: v.count })),
+    payChannel: 2,
+    payType: 1
+  })
+  console.log('---创建订单=', res.result.id)
+
+  // 关闭当前页面，跳转到订单详情
+  uni.redirectTo({ url: `/pagesOrder/detail/detail?id=${res.result.id}` })
+}
 
 </script>
 
@@ -128,7 +160,7 @@ const selectAddress = computed(() => {
     <view class="total-pay symbol">
       <text class="number">{{ orderPre?.summary.totalPayPrice.toFixed(2) }}</text>
     </view>
-    <view class="button" :class="{ disabled: true }"> 提交订单 </view>
+    <view class="button" :class="{ disabled: !selectAddress?.id }" @tap="onOrderSumbit"> 提交订单 </view>
   </view>
 </template>
 
