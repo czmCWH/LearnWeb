@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue'
-import { getMemberOrderPreAPI, getMemberOrderPreNowAPI, postMemberOrderAPI, getMemberOrderAPI } from '@/services/order';
+import { getMemberOrderPreAPI, getMemberOrderPreNowAPI, postMemberOrderAPI } from '@/services/order';
 import type { OrderPreResult } from '@/types/order';
 import { useAddressStore } from '@/stores/modules/address';
 

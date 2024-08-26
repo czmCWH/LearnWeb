@@ -1,5 +1,5 @@
 import { http } from "@/utils/http"
-import type { OrderCreateParams, OrderLogisticResult, OrderPreResult, OrderResult } from "@/types/order"
+import type { OrderCreateParams, OrderListParams, OrderListResult, OrderLogisticResult, OrderPreResult, OrderResult } from "@/types/order"
 
 /**
  * 填写订单 - 获取预付订单信息(即购物车里面勾选的商品)
@@ -49,25 +49,6 @@ export const getMemberOrderByIdAPI = (id: string) => {
 }
 
 /**
- * 获取订单列表
- * /member/order
- */
-/**
- * 获取订单列表
- * @param data orderState 订单状态
- */
-export const getMemberOrderAPI = () => {
-  return http({
-    method: 'GET',
-    url: `/member/order`,
-    data: {
-      page: 1,
-      pageSize: 10
-    }
-  })
-}
-
-/**
  * 模拟发货-内测版
  * @description 在DEV环境下使用，仅在订单状态为待发货时，可模拟发货，调用后订单状态修改为待收货，包含模拟物流。
  * @param id 订单id
@@ -111,6 +92,19 @@ export const getMemberOrderLogisticsByIdAPI = (id: string) => {
 export const deleteMemberOrderAPI = (data: { ids: string[] }) => {
   return http({
     method: 'DELETE',
+    url: `/member/order`,
+    data,
+  })
+}
+
+
+/**
+ * 获取订单列表
+ * @param data orderState 订单状态
+ */
+export const getMemberOrderAPI = (data: OrderListParams) => {
+  return http<OrderListResult>({
+    method: 'GET',
     url: `/member/order`,
     data,
   })
