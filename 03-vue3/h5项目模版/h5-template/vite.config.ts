@@ -4,13 +4,10 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createHtmlPlugin } from 'vite-plugin-html'
 
-// 当前工作目录路径
-const root: string = process.cwd()
-
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // 环境变量
-  const env = loadEnv(mode, root, '')
+  // 获取环境变量
+  const env = loadEnv(mode, process.cwd())
 
   return {
     plugins: [
@@ -24,6 +21,7 @@ export default defineConfig(({ mode }) => {
         }
       })
     ],
+    base: './',
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
