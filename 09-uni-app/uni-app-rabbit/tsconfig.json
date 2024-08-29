@@ -19,6 +19,7 @@
   "vueCompilerOptions": {
     // experimentalRuntimeMode 已废弃，现调整为 nativeTags，请升级 Volar 插件至最新版本
     // "nativeTags": ["block", "component", "template", "slot"]
+    // 如下配置 避免项目 模版 下面显示 波浪下划线 报错样式
     "plugins": ["@uni-helper/uni-app-types/volar-plugin"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]

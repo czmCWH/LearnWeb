@@ -1,8 +1,8 @@
 # 一、pnpm 包管理器
 
 pnpm 是一个包管理工具，和npm/yarn没有区别，主要优势在于：
-* 包安装速度极快
-* 磁盘空间利用效率高
+* 包安装速度极快，比同类工具快2倍左右；
+* 磁盘空间利用效率高；
 
 pnpm 官网 <https://www.pnpm.cn/>
 
@@ -74,7 +74,9 @@ $ npm run dev
 
 这些配置都可以在 prettier 风格配置：<https://prettier.io/docs/en/options.html> 中找到。
 
-### 进入项目的 `.eslintrc.cjs` 中添加：
+### 进入项目的 `.eslintrc.cjs` 中添加项目自己的代码风格：
+
+用来覆盖 prettier 的默认代码风格。
 
 ```js
 rules: {
@@ -83,7 +85,7 @@ rules: {
     {
       singleQuote: true,    // 单引号
       semi: false,          // 不使用分号
-      printWidth: 100,      // 一行宽度为 100 个字符
+      printWidth: 80,      // 一行宽度为 80 个字符
       trailingComma: 'none', // 不在【数组|对象】最后加逗号 
       endOfLine: 'auto'     // 由系统自动决定换行(win mac 不一致)
     }
@@ -94,9 +96,14 @@ rules: {
       ignores: ['index']
     }
   ],
-  'vue/no-setup-props-destructure': ['off']   // 关闭props解构，默认prop 解构会丢失响应式
+  'vue/no-setup-props-destructure': ['off']   // 由于props解构默认会丢失响应式，所以当进行props解构时会有错误提示，此时关闭props解构，就可以避免错误提示，再再后面开启【props解构语法糖】
 }
 ```
+
+> 要实现保存之后自动修复功能？
+> 安装 Eslint 且配置保存修复，不要开启默认的自动保存格式化，这样会冲突。
+
+`npm lint`：使用 Eslint 修复所有文件代码风格。
 
 ### 使用 eslint 命令分析代码
 
@@ -120,8 +127,12 @@ eslint 其它配置可参考微信公众号【前端工匠】 <https://mp.weixin
 
 ## 4.2、其它插件
 
-* 哈士奇 husky
-* lint-staged
+* 哈士奇 husky：用于在 git 提交代码前，检查代码是否存在错误，并阻止git提交到仓库。
+
+https://typicode.github.io/husky/
+
+* lint-staged：husky 是对所有的代码就行检查，安装 lint-staged 插件只对修改的文件做代码检查。
+
 
 ## 4.3、配置 vite.config.ts
 
@@ -145,7 +156,7 @@ export default {
 ./src
 ├── assets        `静态资源，图片`
 ├── components    `通用组件`
-├── composables   `新增组合功能通用函数 类似于Vue2的mixins`
+├── composables   `新增组合功能通用函数（数据和逻辑组合在一起） 类似于Vue2的mixins`
 ├── icons         `新增svg图标`
 ├── router        `修改路由`
 │   └── index.ts
@@ -161,85 +172,6 @@ export default {
 ```
 
 # 六、安装其它插件适配移动端
-
-### 安装 sass 预处理器：`npm i sass` 
-
-[github * wangtunan/blog](https://wangtunan.github.io/blog/cssPrecompiler/sass/#%E5%AE%89%E8%A3%85)，关于 Sass 预解析指示器讲解非常好。
-
-SASS支持两种不同的语法，分别是文件后缀为.scss和.sass，这两种语法功能一样，只是风格不同：
-```css
-/* .scss语法：有括号，有分号 */
-.box {
-  button {
-    outline: none;
-    border: 1px solid #ccc;
-  }
-}
-
-/* .sass缩进语法：无括号，无分号，只有缩进和换行 */
-.box
-  button
-    outline: none
-    border: 1px solid #ccc
-```
-
-### 安装 `postcss-px-to-viewport` 插件适配移动端
-
-```shell
-npm install postcss-px-to-viewport -D
-// or
-npm install postcss-px-to-viewport --save-dev
-```
-
-新增配置 `postcss.config.js` 文件：
-```js
-// postcss.config.js
-// eslint-disable-next-line no-undef
-module.exports = {
-  plugins: {
-    'postcss-px-to-viewport': {
-      viewportWidth: 375
-    }
-  }
-}
-```
-
-有一个控制台警告可忽略，或者使用 `postcss-px-to-viewport-8-plugin` 代替当前插件
-注意事项：
-1. vant组件库、css/scss/less、组件内style会转换
-2. 但是元素行内样式不会转换
-
-
-### 安装 pinia-plugin-persistedstate 实现pinia仓库状态持久化
-
-```shell
-pnpm i pinia-plugin-persistedstate
-# or
-npm i pinia-plugin-persistedstate
-```
-
-### 安装 axios 发送网络请求
-
-```shell
-pnpm i axios
-```
-
-### 安装 vue-i18n 支持项目国际化
-
-```shell
-$ npm i vue-i18n
-```
-
-## 安装 html 模板插件
-
-```shell
-npm i vite-plugin-html -D
-
-# 这样即可在 index.html 文件中可以使用环境变量
-# <%=环境变量名%> 
-```
-
-如用于配置 发环境启用 `cdn eruda` 调试工具。
 
 
 # 七、主题定制
@@ -268,3 +200,9 @@ npm i vite-plugin-html -D
   --van-primary-color: var(--cp-primary);
 }
 ```
+
+## 解决波浪号
+
+
+
+https://github.com/zeorcpt/vue3-vant-mobile

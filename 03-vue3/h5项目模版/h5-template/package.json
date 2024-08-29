@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -13,20 +13,20 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "axios": "^1.7.4",
-    "js-cookie": "^3.0.5",
-    "pinia": "^2.1.7",
-    "pinia-plugin-persistedstate": "^3.2.1",
-    "vant": "^4.9.4",
     "vue": "^3.4.29",
+    "vue-router": "^4.3.3",
+    "vant": "^4.9.4",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^4.0.0-alpha.4",
     "vue-i18n": "^9.14.0",
-    "vue-router": "^4.3.3"
+    "js-cookie": "^3.0.5",
+    "@types/js-cookie": "^3.0.6",
+    "axios": "^1.7.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
-    "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20.16.2",
+    "@types/node": "^20.14.5",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",

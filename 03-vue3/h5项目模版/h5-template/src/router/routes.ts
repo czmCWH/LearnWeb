@@ -2,22 +2,20 @@ import type { RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '',
     name: 'home',
-    component: () => import('@/views/index.vue'),
-    meta: { title: '主页' }
+    redirect: '/home'
   },
   {
-    path: '/pay',
-    name: 'pay',
-    component: () => import('@/views/pay/index.vue'),
-    meta: { title: '主页' }
+    path: '/home',
+    name: 'demo',
+    component: () => import('@/views/home.vue'),
+    meta: { title: '首页' }
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/views/about/index.vue'),
-    meta: { title: '主页' }
+    component: () => import('@/views/about.vue')
   }
 ]
 

@@ -1,3 +1,5 @@
+// tsconfig.json 文件里定义的是一个 compilerOptions 类型的对象
+// https://cn.vuejs.org/guide/typescript/overview#configuring-tsconfig-json
 {
   "files": [],
   "references": [

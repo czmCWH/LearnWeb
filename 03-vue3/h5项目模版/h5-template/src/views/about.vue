@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { $t } from '@/locales'
+import { $t } from '../locales/index'
+
 console.log('---深色模式 =', window.matchMedia('(prefers-color-scheme: dark)').matches)
 console.log('--- userAgent =', navigator.userAgent)
 </script>
+
 <template>
-  <div class="main">H5项目模版</div>
+  <div class="about">我是关于orange</div>
   <h2>{{ $t('demo.description') }}</h2>
   <h3>{{ $t('tools.successBtn') }}</h3>
 </template>
 
 <style lang="scss" scoped>
-.main {
+.about {
+  background-color: orange;
   width: 375px;
-  height: 375px;
-  background-color: var(--cp-primary);
-  color: black;
-  text-align: center;
+  height: 20px;
 }
 </style>
