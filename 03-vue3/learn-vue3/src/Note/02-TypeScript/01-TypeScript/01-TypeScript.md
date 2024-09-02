@@ -70,3 +70,7 @@ npm create vite@latest test-ts -- --template vanilla-ts
 # 二、TypeScript 常用核心语法
 
 # 三、Vue3 中组合式API 如何配合 TS 使用
+
+
+# 学习笔记参考
+<https://github.com/sz-hhb/learn-typescript>
