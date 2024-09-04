@@ -1,56 +1,3 @@
-https://uniapp.dcloud.net.cn/component/
-
-
-# HBuilderX 创建项目步骤
-
-1、新建项目时，选择以下信息并创建：
-	项目名 uni-app-project；默认模版；Vue3；
-
-2、运行项目到微信小程序模拟器步骤：
-
-	进入【HBuilderX】>【工具】>【插件安装】>【uni-app(Vue 3)】
-
-	打开【微信小程序】>【设置】>【安全设置】> 开启服务端口
-
-	运行｜停止：进入【HBuilderX】>【运行、运行到小程序模拟器】> 选择【微信开发者工具】
-
-3、新建页面
-进入项目【pages目录】下的存放目录 > 右键【新建页面】> 填写页面名称、勾选在pages.json中注册
-
-# HBuilderX 微信小程序配置
-打开项目 >【manifest.json】文件 >【微信小程序配置】
-
-
-
-
-# 通过命令行创建（需安装 NodeJS 环境）
-
-通过命令行创建项目，不必依赖 HBuilderX。
-HbuilderX对 TS 类型支持暂不完善
-VS Code 对 TS 类型支持友好，熟悉的编辑器
-
-
-具体命令可参考官网：<https://uniapp.dcloud.net.cn/quickstart-cli.html>
-
-创建以 typescript 开发的工程
-
-```shell
-# 速度太慢，可直接在官网下载模版
-$ npx degit dcloudio/uni-preset-vue#vite-ts my-vue3-project
-
-# 安装依赖包
-$ pnpm i
-```
-
-* 在 src/manifest.json 中添加 微信小程序 appid
-* 根据 package.json 中的命令编译微信小程序，如下命令
-
-```shell
-$ pnpm run dev:mp-weixin
-```
-
-* 打开 微信开发者工具, 导入 dist/dev/mp-weixin 运行
-
 
 ## VS Code 中安装 uni-app 插件
 
@@ -118,7 +65,7 @@ $ pnpm i -D @types/wechat-miniprogram @uni-helper/uni-app-types
 
 # uni-ui 组件库
 
-<https://uniapp.dcloud.net.cn/component/uniui/quickstart.html>
+<https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html>
 
 * 配置组件自动导入
 
@@ -144,7 +91,33 @@ $ pnpm i @uni-helper/uni-ui-types -D
 
 
 
+# 日常使用插件
+
+```shell
+# 如果您的根目录没有package.json文件的话，请先执行如下命令：
+$ npm init -y
+```
+
+* uview不支持vue3+ts，使用uview-plus
+
+1、Tabs 标签；tab 选项卡；
+<https://ext.dcloud.net.cn/plugin?id=1971>
 
 
 
+# 配置 easycom
 
+配置easycom组件模式
+
+需要在项目src目录的pages.json中进行 
+
+温馨提示：
+
+uni-app为了调试性能的原因，修改easycom规则不会实时生效，配置完后，您需要重启HX或者重新编译项目才能正常使用uview-plus的功能。
+
+请确保您的pages.json中只有一个easycom字段，否则请自行合并多个引入规则。
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/weixin_43743175/article/details/133711188

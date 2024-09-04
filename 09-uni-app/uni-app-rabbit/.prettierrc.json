@@ -1,7 +1,10 @@
 {
-  "singleQuote": true,
-  "semi": false,
   "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "vueIndentScriptAndStyle": true,
   "trailingComma": "all",
   "endOfLine": "auto"
 }

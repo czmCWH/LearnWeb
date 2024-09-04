@@ -106,6 +106,7 @@ const onRefresherrefresh = async () => {
 <style lang="scss">
 /* 通过 page 设置整个页面的背景，注意 style 标签不能使用 scoped */
 page {
+  background-color: $uni-color-primary;
   background-color: #F7F7F7;
   height: 100%;
   display: flex;
