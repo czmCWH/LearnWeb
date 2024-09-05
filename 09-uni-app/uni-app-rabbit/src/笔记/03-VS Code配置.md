@@ -121,3 +121,7 @@ uni-app为了调试性能的原因，修改easycom规则不会实时生效，配
                             版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
                         
 原文链接：https://blog.csdn.net/weixin_43743175/article/details/133711188
+
+
+# Vetur 暂不支持 ts
+因此在 import 组件时，组件名下面会有红色波浪下划线。

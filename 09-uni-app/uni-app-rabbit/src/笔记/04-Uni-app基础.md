@@ -67,6 +67,7 @@ app 的组件时，只需要参照微信小程序内置组件即可。
 # 三、生命周期
 在 `uni-app` 中生命周期 和 `微信小程序` 一样也分成 3个类别，分别是：应用级生命周期、页面级生命周期 和 组件级生命周期，其支持情况可见下表:
 
+![uni-app生命周期](./uni-app生命周期.jpg)
 
 当然上表是不需要大家死记硬背的，大家记这样一个原则即可：
 
@@ -78,9 +79,12 @@ app 的组件时，只需要参照微信小程序内置组件即可。
 // vue 组件生命周期
 import { onMounted } from 'vue'
 
-// 应用/页面生命周期(等价于小程序中的生命周期)
-import { onLaunch, onLoad } from "@dcloudio/uni-app
+// ---- 应用、页面生命周期  等价于  原生小程序中的生命周期
 
+// 应用生命周期
+import { onLaunch, onShow, onHide } from '@dcloudio/uni-app';
+// 页面生命周期
+import { onLoad, onShow, onHide, onReady } from '@dcloudio/uni-app';
 
 </script>
 ```

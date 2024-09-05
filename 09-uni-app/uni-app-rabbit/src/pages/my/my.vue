@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onLaunch, onShow, onHide } from '@dcloudio/uni-app';
 import { useMemberStore } from '@/stores';
 import type { XtxGuessInstance } from '@/types/component'
 import { useGuessList } from '@/composables'
