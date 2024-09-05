@@ -1,7 +1,7 @@
 
 uni-app官网： <https://uniapp.dcloud.net.cn/>
 
-`uni-app === Vue + 原生小程序`
+> `uni-app === Vue + 原生小程序`
 
 # 一、创建项目
 <https://uniapp.dcloud.net.cn/quickstart-hx.html>

@@ -6,7 +6,7 @@ uni-app 项目在运行时会自动将 uni.scss 会自动被注入到页面样�
 
 * 在 uni.scss 中定义全局变量
 
-sass 变量必须以 `$` 开头：
+`sass` 变量必须以 `$` 开头：
 
 ```css
 /*在原有 sass 变量基础上添加新的变量 */
@@ -56,15 +56,21 @@ app 的组件时，只需要参照微信小程序内置组件即可。
 
 
 ## 2.2、uni ui 组件库
-在 uni-app 中的扩展组件(uni ui)大多是一些业务性与交互性比较强的组件，比如倒计时组件、日历组件、文件
+
+`uni-ui`组件库：<https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html>
+
+在 `uni-app` 中的扩展组件(`uni-ui`)大多是一些业务性与交互性比较强的组件，比如倒计时组件、日历组件、文件
 上传等，扩展组件是需要下载到项目录目录中才可以使用。
 
 ## 2.3、uView UI 组件库
 
-插件市场也有许多第三方的优秀组件库，如 uView(不支持 Vue3)，可使用 `uview-plus`。
+`uni-app` 插件市场 也有许多第三方的优秀组件库，如 uView(不支持 Vue3)，可使用 `uview-plus`。
 
+`uView UI`：<https://uviewui.com/>
+`uview-plus`：<https://uiadmin.net/uview-plus/>
 
 # 三、生命周期
+
 在 `uni-app` 中生命周期 和 `微信小程序` 一样也分成 3个类别，分别是：应用级生命周期、页面级生命周期 和 组件级生命周期，其支持情况可见下表:
 
 ![uni-app生命周期](./uni-app生命周期.jpg)
@@ -93,16 +99,47 @@ import { onLoad, onShow, onHide, onReady } from '@dcloudio/uni-app';
 # 四、API调用
 
 ## 4.1、命名空间
+
 uni-app 把微信小程序绝大部分的 API 做了重新实现，使其尽量能在不同的平台(H5的限制比较多)中使用，所不同的是在调用这些 API 时，需要将命名空间换成 uni，举例来说明，原来的调用方法为 `wx.request` 在 `uni-app` 中则换成 `uni.request` 即可.
 
 
 ## 4.2、Promise
+
 在原生小程序中有部分的 API 是不支持 `Promise` 的，比如 `wx.request、wx.uploadFi1e` 等，在 `uni-app` 中对这些 API 的调用方法做了规订，使其即能支持 Promise 也可以支持 callback 方式，它是这样规定的:
 
 1、在调用 API 时，传入 success、 fail、complete 任意回调函数，即为 callback 方式；callback 方式不返回 Promise。
 2、在调用 API 时，没有传入任意回调函数，即为 Promise 方式；返回值为 Promise 时方便配置 async/wait 来获取结果。
 
 # 五、条件编译
+
+<https://uniapp.dcloud.net.cn/tutorial/compiler.html>
+
 uni-app 目标是通过编写一套代码，实现跨端的开发，但是不同的平台之间存在的差异也是事实，很难做到完全一套代码在各个平台都能够兼容，比如 uni.1ogin 这个 API 在 H5 平台就无法被支持，再比如 keep-alive 只能用在 H5端。
 
 为了解决平台的差异性，特殊情况下需要为不同平台编写合适的代码，且要保证这些代码只在某个的平台下运行uni-app 提供了条件编译的技术解决方案。
+
+条件编译是用**特殊的注释**作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。语法格式为:
+```html
+<body>
+  <!--  #ifdef  %PLATFORM% -->
+  平台特有的组件
+  <!--  #endif -->
+</body>
+
+<script setup> 
+  // #ifdef 平台名称 ||平台名称
+  特定平台要执行的代码
+  // #endif
+
+  // #ifndef 平台名称
+  除了此平台之外其它平台要执行的代码
+  // #endif
+</script>
+
+<style>
+  /*  #ifdef 平台名称  */
+  平台特有样式
+  /*  #endif  */
+</style>
+```
+

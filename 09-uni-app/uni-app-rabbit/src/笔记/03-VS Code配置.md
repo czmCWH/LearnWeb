@@ -1,5 +1,7 @@
+通过命令行方式创建 uni-app 项目后，我们还需要对 VS Code 以及项目做一些配置。
 
-## VS Code 中安装 uni-app 插件
+# 一、安装 VS Code 插件
+
 
 * uni-create-view
 在 VS Code 右键目录文件夹快速创建页面与组建，创建视图页面时将自动添加 pages.json 中
@@ -8,7 +10,7 @@
 提供 uni-app 基本能力代码片段
 
 * uniapp小程序扩展
-鼠标悬浮在api上面会提示文档
+鼠标悬浮在 api 上面会提示文档
 
 
 ## 为项目配置 TS 类型校验
@@ -55,6 +57,10 @@ $ pnpm i -D @types/wechat-miniprogram @uni-helper/uni-app-types
 1、打开 VS Code > 设置 > 搜索[文件关联] > 配置与语言的文件关联的 glob patterns > 添加 【项：manifest.json 和 pages.json】【值：jsonc】
 
 2、uni-app 项目中只能添加 manifest.json 和 pages.json 文件。
+
+
+# Vetur 暂不支持 ts
+因此在 import 组件时，组件名下面会有红色波浪下划线。
 
 
 
@@ -123,5 +129,3 @@ uni-app为了调试性能的原因，修改easycom规则不会实时生效，配
 原文链接：https://blog.csdn.net/weixin_43743175/article/details/133711188
 
 
-# Vetur 暂不支持 ts
-因此在 import 组件时，组件名下面会有红色波浪下划线。
