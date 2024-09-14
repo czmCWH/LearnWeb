@@ -16,6 +16,8 @@ uni-app官网： <https://uniapp.dcloud.net.cn/>
 	填写项目名 uni-app-project；
   默认模版；Vue3；
 
+👉 注意：如下配置（2、3）适用于【使用命令行方式创建项目】，且都是必要配置！！！
+
 2、配置微信小程序 app id
 
 打开项目 >【manifest.json】文件 >【微信小程序配置】
@@ -55,7 +57,7 @@ $ pnpm i
 # 编译运行小程序
 $ pnpm run dev:mp-weixin
 ```
-根据 VS Code 控制台提示将 `dist/dev/mp-weixin` 的编译文件，用【微信开发者工具】打开运行。
+根据 `VS Code` 控制台提示将 `dist/dev/mp-weixin` 的编译文件，用【微信开发者工具】打开运行。
 
 ### 命令行方式创建 uni-app 项目的特点
 

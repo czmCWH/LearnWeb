@@ -9,9 +9,9 @@
 进入 HBuilderX 顶部工具栏【工具】> 点击【插件安装】> 选择【安装新插件】
 常用插件如下：
 
+* uni-app(Vue 3)编译器：uni-app (Vue 3)编译vue3到各端的编译器。
 * Prettier：格式化less、sass、vue、stylus(vue内嵌)、ts、yaml代码。
 * dart-sass编译：编译 scss 为 css。uni-app 编译 vue3 使用。
-* uni-app(Vue 3)编译：uni-app (Vue 3)编译到各端的编译器。
 * uni-helpers：uni-app的编译器辅助工具。
 
 ## 1.3、配置插件
