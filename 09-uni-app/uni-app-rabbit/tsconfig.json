@@ -20,7 +20,11 @@
   // 校验 uni-app 组件类型
   "vueCompilerOptions": {
     // experimentalRuntimeMode 已废弃，现调整为 nativeTags，请升级 Volar 插件至最新版本
+    // "experimentalRuntimeMode": "runtime-uni-app",
+
+    // 
     // "nativeTags": ["block", "component", "template", "slot"]
+
     // 调整 Volar（Vue 语言服务工具）解析行为，用于为 uni-app 组件提供 TypeScript 类型
     "plugins": ["@uni-helper/uni-app-types/volar-plugin"]
   },

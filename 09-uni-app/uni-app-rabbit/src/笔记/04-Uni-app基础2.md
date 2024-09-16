@@ -57,7 +57,7 @@ onLoad(() => {
 })
 ```
 
-# 三、easycom 组件规范
+# 三、easycom 组件自动导入
 
 <https://uniapp.dcloud.net.cn/component/#easycom>
 
@@ -65,5 +65,5 @@ onLoad(() => {
 1. 安装在项目根目录的 `components` 目录下，并符合 `components/组件名称/组件名称.vue`
 2. 安装在 `uni modules` 目录下，路径为 `uni_modules/插件ID/components/组件名称/组件名称.vue`。
 
-
+> 注意：`uni-app` 为了调试性能的原因，修改 `easycom` 规则不会实时生效，配置完后，需要重启HX或者重新编译项目才能正常使用功能。
 

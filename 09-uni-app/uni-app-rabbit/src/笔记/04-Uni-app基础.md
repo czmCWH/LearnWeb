@@ -1,4 +1,14 @@
-# 一、项目全局文件
+# 一、uni-app 和 原生小程序开发区别
+
+uni-app 的每个页面都是一个 .vue 文件，数据绑定及事件处理同 Vue.js 规范一直：
+
+1、属性绑定 src="{{ url }}" 升级成 :src="url"；
+
+2、事件绑定 bindtap="eventName" 升级成 @tap="eventName"，并且支持()传参；
+
+3、支持 Vue 常用指令 v-for、v-if、v-show、v-model 等；
+
+# 二、项目全局文件
 
 ## 1.1、uni.scss
 
@@ -48,7 +58,7 @@ pages.json 文件即包含了小程序的【全局配置】也包含了【页面
 * `subPackages` 分包
 
 
-# 二、组件
+# 三、组件
 
 ## 2.1、内置组件
 
@@ -70,7 +80,7 @@ app 的组件时，只需要参照微信小程序内置组件即可。
 `uView UI`：<https://uviewui.com/>
 `uview-plus`：<https://uiadmin.net/uview-plus/>
 
-# 三、生命周期
+# 四、生命周期
 
 在 `uni-app` 中生命周期 和 `微信小程序` 一样也分成 3个类别，分别是：应用级生命周期、页面级生命周期 和 组件级生命周期，其支持情况可见下表:
 
