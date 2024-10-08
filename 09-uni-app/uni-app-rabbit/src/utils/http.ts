@@ -7,6 +7,14 @@ import { useMemberStore } from '@/stores'
 
 const baseURL = 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
 
+// 将当前项目所有 tabBar 页面列出来
+const tabBarPagePaths = [
+  'pages/index/index',
+  'pages/category/category',
+  'pages/cart/cart',
+  'pages/my/my'
+]
+
 // 添加拦截器
 const httpInterceptor = {
   // 拦截前触发
@@ -73,9 +81,24 @@ export const http = <T>(options: UniApp.RequestOptions) => {
           resolve(res.data as Data<T>)
         } else if (res.statusCode === 401) {
           // 3.1 401错误  -> 清理用户信息，跳转到登录页
+
+          // 获取当前页面路径
+          const pageStack = getCurrentPages()
+          const currentPage = pageStack[pageStack.length - 1]
+          const redirectURL = currentPage.route ?? ''
+          // 判断数组中是否包含某个单元
+          const routeType = tabBarPagePaths.includes(redirectURL) ? 'switchTab' : 'redirectTo'
+
+          // 清理用户信息
           const memberStore = useMemberStore()
           memberStore.clearProfile()
-          uni.navigateTo({url: '/pages/login/login'})
+          // 跳转到登录页
+          // uni.navigateTo({url: '/pages/login/login'})
+          // 跳转到登录页(需要在地址上拼凑参数，即回跳地址)
+          uni.redirectTo({
+            url: `/pages/login/login?redirectURL=/${redirectURL}&routeType=${routeType}`
+          })
+
           // 标记请求失败
           reject(res)
         } else {

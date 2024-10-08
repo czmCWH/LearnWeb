@@ -5,6 +5,12 @@ import { postLoginWxMin, postLoginWxMinSimple } from '@/services/login';
 import { useMemberStore } from '@/stores';
 import type { LoginResult } from '@/types/member';
 
+// 接收页面参数，即路由参数
+const query = defineProps<{
+  redirectURL: string,
+  routeType: 'switchTab' | 'redirectTo'
+}>()
+
 // 获取 code 登录凭证
 let code = ''
 onLoad(async () => {
@@ -46,7 +52,8 @@ const loginSuccess = (profile: LoginResult) => {
   setTimeout(() => {
     // 等提示成功，再页面跳转
     // uni.switchTab({url:'/pages/my/my',})
-    uni.navigateBack()
+    // uni.navigateBack()
+    uni[query.routeType]({ url: query.redirectURL });
   }, 500)
 }
 

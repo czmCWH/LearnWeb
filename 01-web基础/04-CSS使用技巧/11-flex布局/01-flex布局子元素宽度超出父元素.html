@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!-- 
+		左右元素宽度自适应，文本省略号显示不溢出
+
+		参考博客：
+		https://juejin.cn/post/6974356682574921765
+		https://juejin.cn/post/7372126591215337523
+
+	 -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>flex左右布局禁止子元素超出父级宽度</title>
+	<style type="text/css">
+		.container {
+			display: flex;
+			justify-content: space-between;
+      		align-items: center;
+			border: 1px solid red;
+      		width: 250px;
+      		height: 80px;
+      		color: black;
+		}
+		.left {
+			margin-right: 10px;
+			width: 0;
+			min-width: 0;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			font-size: 12px;
+			background-color: pink;
+		}
+		.right {
+			align-self: center;
+			padding: 10px 20px;
+			height: 50px;
+			background-color: greenyellow;
+		}
+		.single-ellipsis {
+		  	white-space: nowrap;
+		  	overflow: hidden;
+		  	text-overflow: ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+			<span class="single-ellipsis">标题文案</span>
+			<span class="single-ellipsis">详细内容文本详细内容文本详细内容文本</span>
+		</div>
+		<div class="right">按钮</div>
+	</div>
+</body>
+</html>
