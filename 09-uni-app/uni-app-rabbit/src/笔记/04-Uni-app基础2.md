@@ -67,3 +67,13 @@ onLoad(() => {
 
 > 注意：`uni-app` 为了调试性能的原因，修改 `easycom` 规则不会实时生效，配置完后，需要重启HX或者重新编译项目才能正常使用功能。
 
+# 四、设置 page 根元素的样式
+
+```css
+<style>
+	/* page不能写带scope的style标签中，否则无效 */
+	page {
+		background-color: rgb(240, 240, 240);
+	}
+</style>
+```
