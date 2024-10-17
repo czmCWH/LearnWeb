@@ -1,4 +1,4 @@
-# uni-app 项目模版
+# 一、uni-app 项目模版
 
 ## uni-app-vite-vue3-tailwind-vscode-template
 
@@ -10,3 +10,11 @@
 
 文档介绍：<https://codercup2.github.io/unibest-docs/base/ui/ui>
 
+
+# 二、创建 uni-app 方式
+
+## uni-helper/create-uni
+
+uni-helper/create-uni：<https://github.com/uni-helper/create-uni>
+
+`create-uni` 是一个用于快速创建 `uni-app` 项目的轻量脚手架工具，它可以帮助你快速创建一个基于vite和vue3的uni-app项目，同时提供了一些模板供你选择。
