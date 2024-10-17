@@ -53,3 +53,5 @@
 
 代码提示插件：Vue VSCode Snippets
 代码高亮插件：Vue - Official
+
+前端工匠 * 5 个让 VS Code 更好用的设置：<https://mp.weixin.qq.com/s/fIS7CYuURoNJl22SUtjo5A>

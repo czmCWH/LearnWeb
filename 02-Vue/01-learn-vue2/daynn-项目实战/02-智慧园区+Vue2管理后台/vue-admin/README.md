@@ -11,6 +11,12 @@
 黑马老师 RisingSun * 语雀 ：https://www.yuque.com/zj-risingsun
 
 
+## Node 环境
+
+```shell
+$ node/18.14.2
+```
+
 ## 项目登录账号密码
 
 ```

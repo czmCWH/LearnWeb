@@ -74,6 +74,7 @@ onLoad(() => {
 	/* page不能写带scope的style标签中，否则无效 */
 	page {
 		background-color: rgb(240, 240, 240);
+    height: 100%;   /* 给page设置 height，可以使得 safe-area-inset 生效 */
 	}
 </style>
 ```
