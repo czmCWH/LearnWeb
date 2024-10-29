@@ -75,13 +75,20 @@ onLoad(() => {
 
 ```css
 <style>
-	/* page不能写带scope的style标签中，否则无效 */
-	page {
-		background-color: rgb(240, 240, 240);
-    height: 100%;   /* 给page设置 height，可以使得 safe-area-inset 生效 */
-	}
+/* page 是原生小程序页面最外层的标签(虽然我们从未写过)，uni-app 中可以通过 page 标签选择器设置整个页面的背景 */
+/* page不能写带scope的style标签中，否则无效 */
+page {
+  background-color: rgb(240, 240, 240);
+  height: 100%;   /* 给page设置 height，可以使得 safe-area-inset 生效 */
+}
+
+/** 设置组件的根元素 */ 
+:host {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+}
 </style>
 ```
-
-# 四、
-列表中使用 image 标签加载 webp 动图时，会出现一片空白
