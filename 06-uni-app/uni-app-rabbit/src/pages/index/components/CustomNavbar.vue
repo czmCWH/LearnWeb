@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 获取屏幕顶部安全距离
-const { safeAreaInsets } = uni.getSystemInfoSync()
+const { safeAreaInsets, windowHeight } = uni.getSystemInfoSync()
 
 </script>
 

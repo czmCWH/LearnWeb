@@ -24,7 +24,10 @@ $uni-bg-color: #f4f4f4;
 ```
 
 * 在 组件或者页面中使用 该变量
-注意：style 标签需设置 lang="scss"，且在 uni-app 中不能使用 scoped。
+> 注意！！！！！！！！！：
+> style 标签需设置 lang="scss"，且在 uni-app 中不能使用 scoped。
+> 用uniapp写小程序，scss不要加scoped，这样更容易重写样式。
+
 
 ```vue
 <style lang="scss">

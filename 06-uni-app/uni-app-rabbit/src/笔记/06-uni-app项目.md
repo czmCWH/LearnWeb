@@ -1,5 +1,13 @@
 # 一、uni-app 项目模版
 
+## ttk-cli/uni-vue3-vite-ts-pinia
+
+<https://github.com/ttk-cli/uni-vue3-vite-ts-pinia>，此项目集成了 ESLint、Prettier、Stylelint、husky、lint-staged 、commitlint等常用技术栈，
+同时实现了 pinia 在 uniapp 中的持久化插件pinia-plugin-persist-uni以及 storeToRefs 增强插件pinia-auto-refs。
+
+> 参考自：李 响 <https://www.insist.life/index.php/2024/04/17/好用的脚手架推荐/>
+
+
 ## uni-app-vite-vue3-tailwind-vscode-template
 
 <https://github.com/sonofmagic/uni-app-vite-vue3-tailwind-vscode-template>：【github * sonofmagic / uni-app-vite-vue3-tailwind-vscode-template】，uni-app vue3 tailwindcss 模板，集成了 iconify,eslint,typescript,prettier 等等工具作为解决方案

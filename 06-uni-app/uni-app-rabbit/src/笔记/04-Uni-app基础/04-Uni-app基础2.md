@@ -14,8 +14,12 @@
 方式二：代码获取安全边距
 ```ts
 <script setup> 
-const { safeAreaInsets } = uni.getSystemInfoSync()
-console.log(safeAreaInsets)
+// 已被废弃。由于 getSystemInfo 接口里承载了过多内容，单次调用可能比较久。
+// const { safeAreaInsets } = uni.getSystemInfoSync()
+// 可使用
+const { statusBarHeight } = uni.getWindowInfo()
+
+console.log(statusBarHeight)
 </script>
 ```
 
@@ -78,3 +82,6 @@ onLoad(() => {
 	}
 </style>
 ```
+
+# 四、
+列表中使用 image 标签加载 webp 动图时，会出现一片空白
