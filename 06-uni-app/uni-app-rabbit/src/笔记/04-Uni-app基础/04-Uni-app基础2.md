@@ -17,7 +17,7 @@
 // 已被废弃。由于 getSystemInfo 接口里承载了过多内容，单次调用可能比较久。
 // const { safeAreaInsets } = uni.getSystemInfoSync()
 // 可使用
-const { statusBarHeight } = uni.getWindowInfo()
+const { statusBarHeight, safeArea } = uni.getWindowInfo()
 
 console.log(statusBarHeight)
 </script>
