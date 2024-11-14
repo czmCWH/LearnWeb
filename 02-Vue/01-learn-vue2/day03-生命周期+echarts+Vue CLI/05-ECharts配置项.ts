@@ -1,10 +1,14 @@
+/*
+  官网地址：<https://echarts.apache.org/handbook/zh/get-started>
+ */
+
 /**
   title：标题
-  legend: {   // 在一旁显示的单独图例
+  legend: {   // 图例：是图表中对内容区元素的注释，在一旁显示的单独图例，一般放在图表的右上角。
     orient: "horizontal",   // 水平排列
     right: 5,
     top: 10,
-    data: ["series 中的name"]
+    data: ["", "", ...]  // 与series 中的name对应
   },
   xAxis: {   // x轴
     type: "category", // 轴类型：常用 category、value，当为 category 时，轴上显示data；当为 value时，不需要data，自动会从 series 中匹配数据
@@ -30,7 +34,7 @@
     },
     scale: true   // true：可以脱离0值比例，默认不脱离0值比例，即不从0开始显示刻度
   },
-  grid: {   // 表格的区域，用于避免X、Y轴刻度被遮挡，不显示完整
+  grid: {   // 表格的区域位置，用于避免X、Y轴刻度被遮挡，不显示完整
     left: 80
   },
   series: [   // 系列数组，一个对象元素就是一个系列，一个系列就是一个完整的图表
