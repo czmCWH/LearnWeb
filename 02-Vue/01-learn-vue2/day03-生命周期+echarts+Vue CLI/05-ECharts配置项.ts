@@ -15,6 +15,7 @@
     data: ["A", "B", "C", "D", "E"]   // x轴上的title
     position: 'bottom'  // x轴的位置
     boundaryGap: false  // 将类目轴的boundaryGap设置为false，可以将 series 符号在轴线起点放置，即顶到头开始绘制
+        // 默认为 true , 这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间
   },
   yAxis: {
     type: "value",
@@ -36,6 +37,7 @@
   },
   grid: {   // 表格的区域位置，用于避免X、Y轴刻度被遮挡，不显示完整
     left: 80
+    containLabel: true //  grid 区域是否包含坐标轴的刻度标签, true 这常用于『防止标签溢出』的场景
   },
   series: [   // 系列数组，一个对象元素就是一个系列，一个系列就是一个完整的图表
     {
