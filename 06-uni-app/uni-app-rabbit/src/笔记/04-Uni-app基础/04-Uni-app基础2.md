@@ -23,6 +23,11 @@ console.log(statusBarHeight)
 </script>
 ```
 
+```ts
+const res = wx.getSystemInfoSync();
+console.log(res.pixelRatio); // 输出设备像素比
+```
+
 # 二、获取 DOM 节点
 
 ！！！！：原生小程序中并没有 DOM 操作相关的内容，也因此在 uni-app 中也是无法对 DOM 进行操作的。
