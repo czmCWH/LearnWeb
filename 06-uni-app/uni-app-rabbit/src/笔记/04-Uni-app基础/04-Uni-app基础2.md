@@ -30,12 +30,17 @@ console.log(res.pixelRatio); // 输出设备像素比
 
 # 二、获取 DOM 节点
 
-！！！！：原生小程序中并没有 DOM 操作相关的内容，也因此在 uni-app 中也是无法对 DOM 进行操作的。
-但在实际开发过程中是有获取节点信息，如宽高、位置等信息的需求的。如下方式在小程序中不生效：
 <https://ask.dcloud.net.cn/article/id-37887__page-2>
+<https://juejin.cn/post/7156424196547936263>
+
 ```ts
- setTimeout(async () => {
-  const instance = getCurrentInstance();
+// 注意：instance 的获取应该放在
+const instance = getCurrentInstance();
+
+// let selectorQuery: UniApp.SelectorQuery | undefined
+
+setTimeout(async () => {
+  
   console.log('----czm instance =', instance)
   const query = uni.createSelectorQuery().in(instance?.proxy);
   query

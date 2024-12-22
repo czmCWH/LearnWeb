@@ -11,7 +11,7 @@ defineProps({
   count: Number
 })
 
-// 通过 defineEmits 编译器宏生成emit方法 -> emit(this.$emit)
+// 通过 defineEmits 编译器宏生成emit方法 -> emit(this.$emit)，声明父组件传递给子组件的事件
 const emit = defineEmits(['get-msg'])
 const sendMsg = () => {
   // TODO: 触发自定义事件，给父组件传递值
