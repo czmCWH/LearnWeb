@@ -18,19 +18,16 @@ canvas drawImage()：<https://www.runoob.com/tags/canvas-drawimage.html>
 
 ## 代码示例
 
-<https://www.cnblogs.com/Intellectualscholar/p/15924090.html>，uniapp 使用canvas实现图片拼接(图片拼版)，[有坐标注释，感觉不太对]
+非常不错，带有源码：<https://blog.csdn.net/gitblog_09777/article/details/141977501?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&utm_relevant_index=2>
+<项目地址:https://gitcode.com/open-source-toolkit/7e953>，代码已下载到本地了。
 
-<https://mp.weixin.qq.com/s/Ul7-KBYZgt-twbY8fg5opA>，微信小程序画布canvas的使用以及案例图片加水印的处理，[]
+<https://juejin.cn/post/7446201937274880050>，uni-app+vue3绘制图片，等待所有图片加载完成return Promise.all(imagePromises).then 再绘制。
+
+<https://mp.weixin.qq.com/s/Ul7-KBYZgt-twbY8fg5opA>，微信小程序画布canvas的使用以及案例图片加水印的处理。
 
 <https://mp.weixin.qq.com/s/Fdv-0D5ybR3T3PIhr6gBJA>，小程序 — canvas图片合成，【拼相框】
 
-
-
 <https://github.com/nimoat/photo-edit>，微信小程序：图片裁剪、缩放、涂鸦、添加文字、拼长图、拼相框、表情包制作。便捷的图片编辑工具。【有解题思路】
-
-非常不错，带有源码：<https://blog.csdn.net/gitblog_09777/article/details/141977501?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&utm_relevant_index=2>
-<项目地址:https://gitcode.com/open-source-toolkit/7e953>
-
 
 微信小程序画布canvas的使用以及案例图片加水印的处理：<https://mp.weixin.qq.com/s/Ul7-KBYZgt-twbY8fg5opA>
 
@@ -38,11 +35,6 @@ canvas drawImage()：<https://www.runoob.com/tags/canvas-drawimage.html>
 四、拼长图
 拼长图界面由image组件构成。用户从系统相册选择图片时，将图片的临时路径保存到数组中，而image组件使用列表渲染（wx:for）将数组中的图片全部载入界面，实现拼接的演示效果。在image上绑定longtap事件，长按一张图片后，弹出删除该图片的确认框，确认后在数组中删除该图片的路径，实现删除的演示效果。
 保存时，将数组中的图片依次画在隐藏canvas上，所有图片宽度保持一致，高度按图片比例缩放，每张图片的定位由图片的宽高、缩放比计算得到。这样就实现的拼长图的功能。
-
-
-小程序canvas实现图片缩放合并
-
-
 
 
 # 三、Canvas 的基本使用
@@ -103,28 +95,4 @@ wx.canvasToTempFilePath({
         //
     }
 })
-
 ```
-
-
-# 四、uni-app 操作 canvas
-
-```js
-selectorQuery?.select('#myCanvas') // 在 WXML 中填入的 id
-    .node(({ node }) => {
-      const ctx = (node as UniHelper.Canvas).getContext('2d') as CanvasRenderingContext2D
-      // console.log('---czm node =', node)
-      console.log('---czm1 ctx =', ctx)
-    })
-    .exec()
-
-let ctx: UniApp.CanvasContext = uni.createCanvasContext('myCanvas')
-```
-
-<https://juejin.cn/post/7446201937274880050>，uni-app+vue3绘制图片，等待所有图片加载完成return Promise.all(imagePromises).then 再绘制。
-
-# 五、canvas报错
-
-<https://juejin.cn/post/6844903718123470856>，报错：Maximum call stack size exceeded
-
-<https://blog.csdn.net/weixin_43952913/article/details/131845993> 报错：{errMsg: "canvasToTempFilePath:fail fail canvas is empty"} 

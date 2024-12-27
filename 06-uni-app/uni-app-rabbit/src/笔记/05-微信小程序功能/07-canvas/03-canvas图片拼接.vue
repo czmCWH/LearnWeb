@@ -189,7 +189,7 @@ const onSave = () => {
             img.onerror = (err: any) => reject(err);
           })
         }
-
+        // 等待所有图片加载完成，再绘制
         await Promise.all([loadImage(firstImgUrl), loadImage(secondImgUrl)]).then((images) => {
           console.log('----------开始绘制图片')
           ctx.drawImage(images[0], imgFirCrd.dx, imgFirCrd.dy, imgFirCrd.dWidth, imgFirCrd.dHeight, imgFirCrd.sx, imgFirCrd.sy, imgFirCrd.sWidth, imgFirCrd.sHeight)
