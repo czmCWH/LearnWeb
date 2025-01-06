@@ -24,7 +24,7 @@
 
 ## uniapp-vue3-template
 
-<https://github.com/oyjt/uniapp-vue3-template>，使用uniapp+vite+vue3+uview-plus3.0 搭建的搭建的适合团队协作的快速开发模版。
+<https://github.com/oyjt/uniapp-vue3-template>，294，使用 uniapp+vite+vue3+ts+uview-plus3.0 搭建的搭建的适合团队协作的快速开发模版。👍。
 
 # 二、创建 uni-app 方式
 

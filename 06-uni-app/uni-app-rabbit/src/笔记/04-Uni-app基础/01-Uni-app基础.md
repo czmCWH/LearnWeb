@@ -127,6 +127,7 @@ uni-app 把微信小程序绝大部分的 API 做了重新实现，使其尽量�
 # 五、条件编译
 
 <https://uniapp.dcloud.net.cn/tutorial/compiler.html>
+<https://zh.uniapp.dcloud.io/tutorial/platform.html>
 
 uni-app 目标是通过编写一套代码，实现跨端的开发，但是不同的平台之间存在的差异也是事实，很难做到完全一套代码在各个平台都能够兼容，比如 uni.1ogin 这个 API 在 H5 平台就无法被支持，再比如 keep-alive 只能用在 H5端。
 
