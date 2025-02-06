@@ -7,3 +7,4 @@ SbCo iCSS前端趣闻 * 现代 CSS 解决方案：全尺寸的带圆角的渐变
 
 [掘金 * CSS渐变背景看这一篇就够了+浪漫主义码农](https://juejin.cn/post/7025401720159076360?searchId=20230726151354DE7220EED7F33504DECC)
 
+[掘金 * CSS实现渐变圆角边框](https://juejin.cn/post/7288568920051056697#heading-4)
