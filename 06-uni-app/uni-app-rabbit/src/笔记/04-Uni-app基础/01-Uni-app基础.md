@@ -78,7 +78,9 @@ app 的组件时，只需要参照微信小程序内置组件即可。
 
 ## 2.3、uView UI 组件库
 
-`uni-app` 插件市场 也有许多第三方的优秀组件库，如 uView(不支持 Vue3)，可使用 `uview-plus`。
+`uni-app` 插件市场<https://ext.dcloud.net.cn/> 也有许多第三方的优秀组件库，可以通过 【插件市场 - 作者排行】中选取你需要的组件库，比如：uv_UI、uViewUI 等。
+
+uView(不支持 Vue3)，可使用 `uview-plus`。
 
 `uView UI`：<https://uviewui.com/>
 `uview-plus`：<https://uiadmin.net/uview-plus/>

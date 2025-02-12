@@ -97,7 +97,7 @@ onLoad(() => {
 
 # 四、设置 page 根元素的样式
 
-```css
+```js
 <style>
 /* page 是原生小程序页面最外层的标签(虽然我们从未写过)，uni-app 中可以通过 page 标签选择器设置整个页面的背景 */
 /* page不能写带scope的style标签中，否则无效 */
@@ -106,7 +106,7 @@ page {
   height: 100%;   /* 给page设置 height，可以使得 safe-area-inset 生效 */
 }
 
-/** 设置组件的根元素 */ 
+/**  :host 选择器指定组件所在节点的默认样式 */ 
 :host {
   height: 100vh;
   display: flex;
@@ -115,4 +115,13 @@ page {
   background-color: #fff;
 }
 </style>
+```
+快手小程序支持 :host 选择器： <https://open.kuaishou.com/docs/develop/frame/custom_comp/component_temp_style.html>
+
+# 五、rpx 换算为 px
+
+将rpx单位值转换成px，<https://uniapp.dcloud.net.cn/api/ui/font.html>
+
+```js
+const width = uni.upx2px(750) + 'px';
 ```
