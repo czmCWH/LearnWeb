@@ -70,7 +70,9 @@ const testRef = ref(null)
 </script>
 ```
 
-官方解答：<https://ask.dcloud.net.cn/question/204250>
+官方解答：
+<https://ask.dcloud.net.cn/question/204250>
+<https://ask.dcloud.net.cn/question/205399>
 
 ```
 经过测试，在快手小程序组件基础库 1.8.0 是正常的，在基础库 1.8.0 之后获取失败，具体原因还有待调查。

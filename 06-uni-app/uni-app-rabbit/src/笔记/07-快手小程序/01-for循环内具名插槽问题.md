@@ -1,5 +1,7 @@
 # 一、for循环内定义具名插槽，快手小程序渲染不正确。
 <https://ask.dcloud.net.cn/question/197861>
+<https://ask.dcloud.net.cn/question/204172>
+<https://uniapp.dcloud.net.cn/tutorial/vue-components.html#%E6%8F%92%E6%A7%BD>
 
 uni-app开发定一个 KSTabs 组件，如下代码所示：
 ```js
