@@ -96,3 +96,59 @@ wx.canvasToTempFilePath({
     }
 })
 ```
+
+
+
+```ts
+<canvas type="2d" id="myCanvas" canvas-id="myCanvas" class="canvas-content"></canvas>
+
+
+let selectorQuery = uni.createSelectorQuery().in(instance?.proxy);
+selectorQuery?.select('#myCanvas')
+  .fields({ size: true, node: true }, async (res: any) => {
+
+    // 1、Canvas 对象
+    const { width, height, node } = res
+    const canvas = res.node
+    const canvasWidth = width
+    const canvasHeight = height
+
+    // ------ 方式一：通过 CanvasContext 绘制图片
+    
+    // 2、获取 CanvasContext 绘图上下文
+    const ctx = uni.createCanvasContext('myCanvas')
+
+    ctx.drawImage(imgSrc, 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
+
+
+
+    // ------ 方式二：通过 RenderingContext 绘制图片
+    
+    // 2、获取RenderingContext
+    // https://developers.weixin.qq.com/miniprogram/dev/api/canvas/RenderingContext.html
+    const ctx = canvas.getContext('2d')
+
+    // 微信小程序中，RenderingContext 执行 ctx.drawImage()时，必须不传入image 对象，而不是 src
+    const loadImage = (src: string) => {
+      return new Promise((resolve, reject) => {
+        const img = canvas.createImage()
+        img.src = src
+        img.onload = () => resolve(img);
+        img.onerror = (err: any) => reject(err);
+      })
+    }
+    await Promise.all([loadImage(firstImgUrl.value), loadImage(secondImgUrl.value)]).then((images) => {
+      ctx.drawImage(images[0], 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
+      ctx.drawImage(images[1], 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
+
+    }).catch((err) => {
+      console.log('----图片加载失败 err =', err)
+    })
+
+      
+
+  })
+  .exec()
+
+
+```
