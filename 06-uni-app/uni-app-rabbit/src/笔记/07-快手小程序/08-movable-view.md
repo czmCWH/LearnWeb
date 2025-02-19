@@ -90,5 +90,30 @@ page {
 
 <https://developers.kuaishou.com/topic?tid=26513&bizType=miniprogram&tag=1739845722409>
 
-缩放 movable-view 后，拖动触发 bindchange 方法获得的 x，y 值不正确。我个人理解是：正确的 x，y 值应该是 movable-view 的左上角点相对于 movable-area 的左上角点的偏移量，具体表现却不是如此。
+缩放 movable-view 后，拖动触发 bindchange 方法获得的 (x, y) 是相对于【它自身缩小、放大后显示位置】的偏移量，而不是相对于 movable-area 左上角的坐标点。
+
+## 解决办法：
+
+如下伪代码换算：
+
+```js
+// movable-view 的相关值
+let scale = 1;  // 缩放大小
+const initialWidth, initialHeight;    // 初始size
+const scaleWidth, scaleHeight;    // 缩放后的 size
+
+// movable-view 缩放后 原点 的偏移量，前提条件是 movable-view 的 scale 为 1 时，它的左上角定位在 movable-area 的左上角。
+const offX = (scaleWidth - initialWidth)*0.5
+const offY = (scaleHeight - initialHeight)*0.5
+
+// 换算 movable-view 左上角相对于 movable-area 左上角的坐标为 positionX、positionY
+---- 1、放大
+
+const positionX = -offX + x;
+const positionY = -offY + y;
+
+---- 2、缩小
+const positionX = -offX + x;
+const positionY = -offY + y;
+```
 
