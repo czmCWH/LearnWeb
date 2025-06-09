@@ -21,7 +21,7 @@ canvas drawImage()：<https://www.runoob.com/tags/canvas-drawimage.html>
 非常不错，带有源码：<https://blog.csdn.net/gitblog_09777/article/details/141977501?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7ECtr-1-141977501-blog-88610245.235%5Ev43%5Epc_blog_bottom_relevance_base6&utm_relevant_index=2>
 <项目地址:https://gitcode.com/open-source-toolkit/7e953>，代码已下载到本地了。
 
-<https://juejin.cn/post/7446201937274880050>，uni-app+vue3绘制图片，等待所有图片加载完成return Promise.all(imagePromises).then 再绘制。
+
 
 <https://mp.weixin.qq.com/s/Ul7-KBYZgt-twbY8fg5opA>，微信小程序画布canvas的使用以及案例图片加水印的处理。
 
@@ -98,57 +98,147 @@ wx.canvasToTempFilePath({
 ```
 
 
+### uni-app 使用 Canvas 绘制图片
+
 
 ```ts
 <canvas type="2d" id="myCanvas" canvas-id="myCanvas" class="canvas-content"></canvas>
 
-
-let selectorQuery = uni.createSelectorQuery().in(instance?.proxy);
-selectorQuery?.select('#myCanvas')
-  .fields({ size: true, node: true }, async (res: any) => {
-
-    // 1、Canvas 对象
-    const { width, height, node } = res
-    const canvas = res.node
-    const canvasWidth = width
-    const canvasHeight = height
-
-    // ------ 方式一：通过 CanvasContext 绘制图片
-    
-    // 2、获取 CanvasContext 绘图上下文
-    const ctx = uni.createCanvasContext('myCanvas')
-
-    ctx.drawImage(imgSrc, 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
+.canvas-content {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 128px;
+  height: 64px;
+}
 
 
+const instance = getCurrentInstance();
 
-    // ------ 方式二：通过 RenderingContext 绘制图片
-    
-    // 2、获取RenderingContext
-    // https://developers.weixin.qq.com/miniprogram/dev/api/canvas/RenderingContext.html
-    const ctx = canvas.getContext('2d')
+// 准备水平并列绘制2张图片，大小为：64x64px
+const url = 'https://open.weixin.qq.com/zh_CN/htmledition/res/assets/res-design-download/icon64_wx_logo.png';
+const imgSize = 64;
 
-    // 微信小程序中，RenderingContext 执行 ctx.drawImage()时，必须不传入image 对象，而不是 src
-    const loadImage = (src: string) => {
-      return new Promise((resolve, reject) => {
-        const img = canvas.createImage()
-        img.src = src
-        img.onload = () => resolve(img);
-        img.onerror = (err: any) => reject(err);
-      })
-    }
-    await Promise.all([loadImage(firstImgUrl.value), loadImage(secondImgUrl.value)]).then((images) => {
-      ctx.drawImage(images[0], 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
-      ctx.drawImage(images[1], 0, 0, 60, imgHeight 0, 0, canvasWidth, canvasHeight);
-
-    }).catch((err) => {
-      console.log('----图片加载失败 err =', err)
+// 第1，获取 Canvas 节点、 Size 
+const nodeData = await new Promise<any>((resolve) => {
+  let query = uni.createSelectorQuery().in(instance?.proxy);
+  query.select('#myCanvas')
+    .fields({ size: true, node: true }, (res) => {
+      resolve(res);
     })
+    .exec()
+})
+const { width, height, node } = nodeData
+// Canvas 节点
+const canvasNode = node;
 
-      
+// 第2，调整 Canvas 的输出图片的大小，即画布绘制完成后输出的像素大小
+// ⚠️，也可以通过css绑定，来修改 <canvas> 标签的 style 大小来指定，这样就不需要这一步设置了。
+const pixelRatio = 3;
+const actualWidth = width * 3;
+const actualHeight = height * 3;
 
-  })
-  .exec()
+canvasNode.width = actualWidth;
+canvasNode.height = actualHeight;
+// #ifdef MP-WEIXIN
+ctx.scale(pixelRatio, pixelRatio);
+// #endif
 
+// 第3，准备好画布
+// 3.1、获取 Canvas 上下文
+let ctx: any;
+// https://developers.weixin.qq.com/miniprogram/dev/api/canvas/RenderingContext.html
+// #ifdef MP-WEIXIN
+ctx = canvasNode.getContext("2d");
+// #endif
+// #ifndef MP-WEIXIN
+ctx = uni.createCanvasContext('myCanvas');
+// #endif
+
+// 3.2、清除画布上次的内容
+ctx.clearRect(0, 0, actualWidth, actualHeight);
+// 绘制背景
+ctx.fillStyle = "#FFFFFF";
+ctx.fillRect(0, 0, actualWidth, actualHeight);
+
+
+// 第4，准备好图片，根据不同的平台：返回一个 Image 对象、本地文件地址、网络图片下载后的地址
+const loadImage = (src: string) => {
+  return new Promise<any>((resolve, reject) => {
+    // #ifdef MP-WEIXIN
+    const img = canvas.createImage()
+    img.src = src
+    img.onload = () => resolve(img);
+    img.onerror = (err: any) => reject(err);
+    // #endif
+    // #ifndef MP-WEIXIN
+    // ⚠️，快手端，网络图片需要下载到本地才可以绘制；而本地图片不需要下载。
+    // https://developers.kuaishou.com/topic?tid=3098&bizType=miniprogram
+    if (src.startsWith('http')) {
+      uni.downloadFile({
+        url: src,
+        success: (res) => {
+          if (res.statusCode === 200) {
+            resolve(res.tempFilePath);
+          }
+        },
+        fail: (err) => {
+          reject(err);
+        }
+      });
+    } else {
+      resolve(src);
+    }
+    // #endif
+    });
+}
+
+// 第5，开始绘制
+await Promise.all([loadImage(url), loadImage(url)]).then((images) => {
+  ctx.drawImage(images[0], 0, 0, imgSize, imgSize, 0, 0, actualWidth * 0.5, actualHeight);
+  ctx.drawImage(images[1], 0, 0, imgSize, imgSize, actualWidth * 0.5, 0, actualWidth * 0.5, actualHeight);
+  // #ifdef MP-WEIXIN
+  uni.canvasToTempFilePath({
+    canvasId: 'myCanvas',
+    canvas: canvas,
+    width: actualWidth,
+    height: actualHeight,
+    destWidth: actualWidth,
+    destHeight: actualHeight,
+    success: function (res) {
+     uni.saveImageToPhotosAlbum({
+        filePath: res.tempFilePath
+      })
+      uni.showToast({ title: "保存成功！", icon: "none" });
+    },
+    fail: (err) => {
+      console.log('---wx 绘制失败 error = ', err)
+    }
+  }, instance)
+  // #endif
+  // #ifndef MP-WEIXIN
+  ctx.draw(); // 在快手小程序中 callback 回调函数 可能不会调用，可以单独拿出来书写。
+  uni.canvasToTempFilePath({
+    canvasId: 'myCanvas',
+    canvas: canvas,
+    width: actualWidth,
+    height: actualHeight,
+    destWidth: actualWidth,
+    destHeight: actualHeight,
+    success: function (res) {
+      uni.saveImageToPhotosAlbum({
+        filePath: res.tempFilePath
+      })
+      uni.showToast({ title: "保存成功！", icon: "none" });
+    },
+    fail: (err) => {
+      console.log('---ks 绘制失败 error = ', err)
+    }
+  }, instance)
+  // #endif
+
+}).catch((err) => {
+  console.log('----图片加载失败 err =', err)
+});
 
 ```
