@@ -242,3 +242,6 @@ await Promise.all([loadImage(url), loadImage(url)]).then((images) => {
 });
 
 ```
+
+
+https://developers.kuaishou.com/topic?tid=3118&bizType=miniprogram
