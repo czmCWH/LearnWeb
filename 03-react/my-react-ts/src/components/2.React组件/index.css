@@ -1,0 +1,15 @@
+.box {
+  width: 300px;
+  height: 100px;
+  background-color: pink;
+}
+
+.fill-box {
+  width: 300px;
+  height: 100px;
+  border: 1px solid red;
+}
+
+.box-bg {
+  background-color: blue;
+}

@@ -3,8 +3,9 @@
 import { ref, computed, watch, onMounted, nextTick, getCurrentInstance } from 'vue';
 
 /**
- * @description 环形进度条组件
+ * @description 环形进度条组件，基于 canvas
  * 使用方式：<Circular :percent="progress1" :size="100" :showText="false" />
+ * 小程序中存在致命缺点：组件层级太高，其它组件无法覆盖
  */
 
 const props = withDefaults(defineProps<{
