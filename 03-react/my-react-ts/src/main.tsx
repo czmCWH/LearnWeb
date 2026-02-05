@@ -16,7 +16,7 @@ import { RouterProvider } from "react-router/dom";
 import router from './router';
 // 公共样式
 import '@/styles/index.css'
-import './styles/global.scss'
+import '@/styles/global.scss'
 
 const root = createRoot(document.getElementById('root')!);
 

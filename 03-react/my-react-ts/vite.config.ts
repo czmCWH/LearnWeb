@@ -58,6 +58,7 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    // 配置 tailwindcss 插件，让项目编译时自动分析类名转换为对应的样式
     plugins: [react(), tailwindcss()],
     css: {
       postcss: {

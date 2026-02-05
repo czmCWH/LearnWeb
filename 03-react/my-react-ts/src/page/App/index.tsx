@@ -9,7 +9,7 @@ function App() {
     // <> </> 是一个容器组件
     <>
       <div className="bg-blue-500 text-red">Tailwind CSS</div>
-      <div className="w-96 h-50 bg-amber-300" flex-none justify-center>
+      <div className="w-30.75 h-50  bg-amber-300 flex justify-center text-center">
         好好学习
       </div>
     </>

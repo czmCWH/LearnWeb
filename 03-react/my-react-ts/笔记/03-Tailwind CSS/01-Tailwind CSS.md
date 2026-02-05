@@ -16,8 +16,18 @@ tailwindcss 官网：<https://tailwindcss.com/>，<https://www.tailwindcss.cn/>
 ### 2、原子化CSS
 原子化CSS：定义一些细粒度的 class，叫做原子 class，然后在 html 里直接引入这些原子化的 class。
 
+# 在项目中集成 Tailwindcss
+### 3、在  项目集成 
 
-### 3、在 react19+vite+TypeScript 项目集成 Tailwindcss
+react19+vite+TypeScript
 ```shell
 $ npm install tailwindcss @tailwindcss/vite
 ```
+
+
+# Tailwind CSS 应用框架
+<https://github.com/shadcn-ui/ui>，shadcn-ui/ui，是一个基于 React 和 Tailwind CSS 构建的高质量 UI 组件库，它不是 npm 包，而是可复制粘贴的代码片段集合。
+
+
+
+<https://juejin.cn/post/7363534953651257353#heading-7>
