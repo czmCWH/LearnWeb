@@ -2,10 +2,15 @@ html,
 body {
   margin: 0;
   height: 100%;
+  margin: 0;
 }
 
 #root {
-  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #fff; /* 保证容器背景色，防止两侧留白太突兀 */
+  position: relative;
 }
 
 /* ⚠️：导入 tailwindcss  */
