@@ -16,7 +16,7 @@
 * 
 
 
-# 三、构建 React 应用
+# 三、构建 React19 + vite + typescript 应用
 
 ## 3.1、Create React App (CRA)脚手架（2025年2月14日废弃）
 
